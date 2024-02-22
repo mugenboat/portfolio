@@ -41,10 +41,11 @@ const Introduce = () => {
       <div className="w-[400px] h-[400px] hidden relative lg:flex items-center rounded-full shadow-md shadow-green-300/50">
         <Image
           src="./me.png"
-          layout="fill"
           className="object-cover rounded-full"
-          alt=""
+          alt="boat"
           key="boat"
+          width={400}
+          height={400}
         />
       </div>
     </div>
