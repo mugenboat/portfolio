@@ -11,7 +11,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="./linkedin.svg" alt="" width={35} height={35} />
+            <Image src="/linkedin.svg" alt="" width={35} height={35} />
           </a>
         </div>
 
@@ -21,7 +21,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src="./github.svg" width={35} height={35} alt="" />
+            <Image src="/github.svg" width={35} height={35} alt="" />
           </a>
         </div>
       </div>
