@@ -14,7 +14,7 @@ const Experience = () => {
           <div className="p-6 rounded-lg border border-gray-200 w-[300px] h-[300px]">
             <div className="flex justify-center items-center">
               <Image
-                src="/geeers.png"
+                src="./geeers.png"
                 alt=""
                 width={35}
                 height={35}
@@ -37,7 +37,7 @@ const Experience = () => {
           <div className="p-6 rounded-lg border border-gray-200 w-[300px] h-[300px]">
             <div className="flex justify-center items-center">
               <Image
-                src="/sansiri.png"
+                src="./sansiri.png"
                 alt=""
                 width={35}
                 height={35}
@@ -59,7 +59,7 @@ const Experience = () => {
           <div className="p-6 rounded-lg border border-gray-200 w-[300px] h-[300px]">
             <div className="flex justify-center items-center">
               <Image
-                src="/one.png"
+                src="./one.png"
                 alt=""
                 width={35}
                 height={35}
@@ -81,7 +81,7 @@ const Experience = () => {
           <div className="p-6 rounded-lg border border-gray-200 w-[300px] h-[300px]">
             <div className="flex justify-center items-center">
               <Image
-                src="/mez.png"
+                src="./mez.png"
                 alt=""
                 width={35}
                 height={35}
