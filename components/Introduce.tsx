@@ -44,6 +44,7 @@ const Introduce = () => {
           layout="fill"
           className="object-cover rounded-full"
           alt=""
+          key="boat"
         />
       </div>
     </div>
