@@ -17,10 +17,10 @@ export default function MobileNav(props: {
         </Link>
         <Link
           className="nav-link-mobile"
-          href="/about"
+          href="/projects"
           onClick={props.closeNav}
         >
-          About
+          Projects
         </Link>
       </div>
       <div
