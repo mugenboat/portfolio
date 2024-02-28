@@ -10,7 +10,7 @@ export default function ProjectCard(props: { name: string }) {
       <h2 className="text-center mb-2">{props.name}</h2>
       <div className="break-words">
         <p>asdasdasdasdasdasdasdasdasdsa</p>
-        <p>asdasdasdasdasdasdasdasdasdsa</p>
+        <p>asdasdasdasdasdasda sdasdasdsa</p>
         <p>asdasdasdasdasdasdasdasdasdsa</p>
         <p>asdasdasdasdasdasdasdasdasdsa</p>
         <p>asdasdasdasdasdasdasdasdasdsa</p>
