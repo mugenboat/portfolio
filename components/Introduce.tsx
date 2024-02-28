@@ -52,7 +52,11 @@ const Introduce = () => {
         <h1 className="text-[25px] md:text-[25px] mb-2">Tech Stack</h1>
         <div className="mb-4">
           {skills.map(skill => (
-            <Taglist skill={skill.name} key={skill.name} time={skill.time} />
+            <Taglist
+              skill={skill.name}
+              key={skill.name}
+              time={skill.time || ""}
+            />
           ))}
         </div>
 
