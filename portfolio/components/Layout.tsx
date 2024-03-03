@@ -18,7 +18,7 @@ export default function Layout({ children }: layoutprops) {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="h-[100vh] bg-cover bg-center bg-[#19222e]">
+      <div className="min-h-screen bg-cover bg-center bg-[#19222e]">
         <MobileNav nav={nav} closeNav={closeNav} />
         <Navbar openNav={openNav} />
         <div>
