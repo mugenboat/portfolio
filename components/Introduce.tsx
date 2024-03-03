@@ -65,6 +65,7 @@ const Introduce = () => {
       <div className="w-[400px] h-[400px] hidden relative lg:flex items-center rounded-full shadow-md shadow-green-300/50">
         <Image
           src="./portfolio/me.png"
+          loading="lazy"
           layout="fill"
           className="object-cover rounded-full"
           alt="boat"

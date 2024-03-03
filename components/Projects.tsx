@@ -16,6 +16,7 @@ const Experience = () => {
               <Image
                 src="./geeers.png"
                 alt=""
+                loading="lazy"
                 width={35}
                 height={35}
                 className="rounded-full"
@@ -37,6 +38,7 @@ const Experience = () => {
               <Image
                 src="./sansiri.png"
                 alt=""
+                loading="lazy"
                 width={35}
                 height={35}
                 className="rounded-full"
@@ -57,6 +59,7 @@ const Experience = () => {
               <Image
                 src="./one.png"
                 alt=""
+                loading="lazy"
                 width={35}
                 height={35}
                 className="rounded-full"
@@ -77,6 +80,7 @@ const Experience = () => {
               <Image
                 src="./mez.png"
                 alt=""
+                loading="lazy"
                 width={35}
                 height={35}
                 className="rounded-full"
