@@ -12,7 +12,7 @@ const Contact = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src="./portfolio/linkedin.png"
+              src="./linkedin.png"
               loading="lazy"
               alt=""
               width={35}
@@ -28,7 +28,7 @@ const Contact = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src="./portfolio/github.png"
+              src="./github.png"
               loading="lazy"
               width={35}
               height={35}

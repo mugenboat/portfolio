@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button-link {
+    @apply bg-transparent text-green-700  py-0.5 px-4 border border-green-500 rounded-full;
+  }
+}
