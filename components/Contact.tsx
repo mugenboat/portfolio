@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import linkedin from "/public/linkedin.png";
+import github from "/public/github.png";
 
 const Contact = () => {
   return (
@@ -12,9 +14,9 @@ const Contact = () => {
             rel="noopener noreferrer"
           >
             <Image
-              src="./linkedin.png"
-              loading="lazy"
+              src={linkedin}
               alt=""
+              loading="lazy"
               width={35}
               height={35}
             />
@@ -27,13 +29,7 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              src="./github.png"
-              loading="lazy"
-              width={35}
-              height={35}
-              alt=""
-            />
+            <Image src={github} loading="lazy" width={35} height={35} alt="" />
           </a>
         </div>
       </div>

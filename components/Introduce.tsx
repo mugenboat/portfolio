@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Taglist from "@/components/Taglist";
 import Contact from "./Contact";
+import boat from "/public/boat.png";
 
 const Introduce = () => {
   const skills = [
@@ -64,7 +65,7 @@ const Introduce = () => {
       </div>
       <div className="w-[400px] h-[400px] hidden relative lg:flex items-center rounded-full shadow-md shadow-green-300/50">
         <Image
-          src="./me.png"
+          src={boat}
           loading="lazy"
           layout="fill"
           className="object-cover rounded-full"
