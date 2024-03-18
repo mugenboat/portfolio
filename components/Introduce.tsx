@@ -25,7 +25,7 @@ const Introduce = () => {
         <h1 className="text-[35px] md:text-[35px]">Thanate(Boat)</h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="mb-4 break-words">
-          {`Hi everyone, I'm looking for a Junior front-end developer jobs .I'm a good learner and listener. Now i'm learning React Native and NODE.JS (express) to learn about full stack things.Please kind to me. ⸜(*ˊᗜˋ*)⸝	`}
+          {`Hi everyone, I'm looking for a Junior front-end developer jobs .I'm a good learner and listener. Now i'm learning React Native and NODE.JS (express) to learn about full stack things.Please kind to me. `}
         </p>
         <h1 className="text-[25px] md:text-[25px]">Experience</h1>
         <p>Geekstart Co.,Ltd.</p>
