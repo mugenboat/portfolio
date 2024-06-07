@@ -25,7 +25,7 @@ const Introduce = () => {
         <h1 className="text-[35px] md:text-[35px]">Thanate(Boat)</h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="mb-4 break-words">
-          {`Hi everyone, I'm looking for a Junior front-end developer jobs .I gap years for 1 year since january 2023 - january 2024 . most projects i had coding it private project on bitbucket. `}
+          {`Hi everyone,I'm Boat and i work in a field unrelated to one's degree. I'm looking for a Junior front-end developer jobs .I gap years for 1 year since january 2023 - january 2024 . most projects i had coding it private project on bitbucket. `}
         </p>
         <h1 className="text-[25px] md:text-[25px]">Experience</h1>
         <p>Geekstart Co.,Ltd.</p>
