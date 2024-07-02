@@ -17,6 +17,8 @@ const Introduce = () => {
     { name: "Redux" },
     { name: "Javascript" },
     { name: "Typescript" },
+    { name: "Power BI" },
+    { name: "Python" },
   ];
 
   return (
