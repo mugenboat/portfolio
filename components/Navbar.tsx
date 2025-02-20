@@ -16,6 +16,9 @@ export default function Navbar(props: { openNav: () => void }) {
         <Link className="nav-link" href="/projects">
           Projects
         </Link>
+        <Link className="nav-link" href="/clips">
+          Clips
+        </Link>
         <div onClick={props.openNav}>
           <Bars3Icon className="w-[2rem] md:hidden h-[2rem] cursor-pointer text-yellow-300" />
         </div>
