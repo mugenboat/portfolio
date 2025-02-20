@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Taglist from "@/components/Taglist";
 import Contact from "./Contact";
-import me from "/public/me.jpg";
+import boat from "/public/boat.png";
 
 const Introduce = () => {
   const skills = [
@@ -17,8 +17,6 @@ const Introduce = () => {
     { name: "Redux" },
     { name: "Javascript" },
     { name: "Typescript" },
-    { name: "Power BI" },
-    { name: "Python" },
   ];
 
   return (
@@ -27,7 +25,7 @@ const Introduce = () => {
         <h1 className="text-[35px] md:text-[35px]">Thanate(Boat)</h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="mb-4 break-words">
-          {`Hi everyone,I'm Boat and i was a front end programmer for 3-4 years. Now i'm looking for a new opportunity in many roles. `}
+          {`Hi everyone, I'm looking for a Junior front-end developer jobs .I gap years for 1 year since january 2023 - january 2024 and now i'm learning React and NODE.JS (express) to learn about full stack things.Please kind to me. `}
         </p>
         <h1 className="text-[25px] md:text-[25px]">Experience</h1>
         <p>Geekstart Co.,Ltd.</p>
@@ -65,7 +63,7 @@ const Introduce = () => {
       </div>
       <div className="w-[400px] h-[400px] hidden relative lg:flex items-center rounded-full shadow-md shadow-green-300/50">
         <Image
-          src={me}
+          src={boat}
           loading="lazy"
           layout="fill"
           className="object-cover rounded-full"
