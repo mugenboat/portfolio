@@ -6,7 +6,17 @@ const Experience = () => {
   return (
     <div>
       <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
-        Projects that have been involved in developing.
+        This is sample of my trying editing video, there more because im still
+        learning .
+      </h2>
+      <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
+        You can follow me in Tiktok :
+        <a href="https://www.tiktok.com/@boattheblur" className="text-blue-300">
+          boattheblur
+        </a>
+      </h2>
+      <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
+        Ps. I just created tiktok account on 26 Feb 2025.
       </h2>
 
       <div className="w-[80%] mx-auto mt-6 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-[3rem] h-[100%] items-center justify-items-center">
