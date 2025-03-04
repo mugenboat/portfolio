@@ -25,7 +25,7 @@ const Introduce = () => {
         <h1 className="text-[35px] md:text-[35px]">Thanate(Boat)</h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="mb-4 break-words">
-          {`Hi everyone, I'm looking for a Junior front-end developer jobs .I gap years for 1 year since january 2023 - january 2024 and now i'm learning React and NODE.JS (express) to learn about full stack things.Please kind to me. `}
+          {`Hi everyone, i'm freelance .Please kind to me. `}
         </p>
         <h1 className="text-[25px] md:text-[25px]">Experience</h1>
         <p>Geekstart Co.,Ltd.</p>
@@ -48,6 +48,8 @@ const Introduce = () => {
             development process and improve overall website performance.
           </li>
         </ul>
+        <p>Freelance</p>
+        <p className="mb-4">Jan 2024 - Current</p>
         <h1 className="text-[25px] md:text-[25px] mb-2">Tech Stack</h1>
         <div className="mb-4">
           {skills.map(skill => (
