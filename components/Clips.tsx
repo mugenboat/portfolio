@@ -54,7 +54,21 @@ const Experience = () => {
             <div className="flex justify-center items-center">
               <iframe
                 className="p-3"
-                src="https://youtube.com/embed/hS4rdwi0Lxc"
+                src="https://youtube.com/embed/JXUhg9WXCnY"
+                allowFullScreen
+                loading="lazy"
+                width="250"
+                height="250"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="text-green-300">
+          <div className=" rounded-lg border border-gray-200 w-[260px] h-[250px]">
+            <div className="flex justify-center items-center">
+              <iframe
+                className="p-3"
+                src="https://youtube.com/embed/KvML_nF5ZMo"
                 allowFullScreen
                 loading="lazy"
                 width="250"
