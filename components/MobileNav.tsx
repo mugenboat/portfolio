@@ -24,10 +24,10 @@ export default function MobileNav(props: {
         </Link>
         <Link
           className="nav-link-mobile"
-          href="/Clips"
+          href="/video"
           onClick={props.closeNav}
         >
-          Clips
+          Video
         </Link>
       </div>
       <div
