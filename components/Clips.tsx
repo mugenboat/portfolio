@@ -20,7 +20,7 @@ const Experience = () => {
         learning .
       </h2>
       <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
-        You can follow me in Tiktok :
+        watch me more in Tiktok :
         <a href="https://www.tiktok.com/@boattheblur" className="text-blue-300">
           boattheblur
         </a>
