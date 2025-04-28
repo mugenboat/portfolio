@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Taglist from "@/components/Taglist";
 import Contact from "./Contact";
-import boat from "/public/boat.png";
+import boat from "/public/me.jpg";
 
 const Introduce = () => {
   const skills = [
@@ -22,7 +22,9 @@ const Introduce = () => {
   return (
     <div className="w-[80%] grid-cols-1 mx-auto mt-6 grid lg:grid-cols-2 gap-[3rem] h-[100%] items-center justify-items-center">
       <div className="text-green-300">
-        <h1 className="text-[35px] md:text-[35px]">Thanate(Boat)</h1>
+        <h1 className="text-[35px] md:text-[35px]">
+          Thanate Janyaswasdi(Boat)
+        </h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="mb-4 break-words">
           {`Hi everyone, i'm freelance .Please kind to me. `}
