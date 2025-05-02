@@ -26,12 +26,15 @@ const Introduce = () => {
           Thanate Janyaswasdi(Boat)
         </h1>
         <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
-        <p className="mb-4 break-words">
-          {`Hi everyone, i'm freelance .Please kind to me. `}
+        <p className="break-words">
+          {`Hi everyone, i'm boat and now i looking jobs for content creator and tiktok . Please kind to me. 
+          `}
         </p>
+        <p className="mb-4 break-words">ありがとうございます.</p>
+
         <h1 className="text-[25px] md:text-[25px]">Experience</h1>
         <p>Geekstart Co.,Ltd.</p>
-        <p>Jun 2019 - Jan 2023 · 3 yrs 8 m</p>
+        <p className="mb-4">Jun 2019 - Jan 2023 · 3 yrs 8 m</p>
         <ul className="list-outside list-disc mb-4">
           <li>
             Developed and maintained responsive web pages using HTML, CSS, and
@@ -52,6 +55,16 @@ const Introduce = () => {
         </ul>
         <p>Freelance</p>
         <p className="mb-4">Jan 2024 - Current</p>
+        <ul className="list-outside list-disc mb-4">
+          <li>
+            create and editing for content i desire for my tiktok or for my
+            friends
+          </li>
+          <li>
+            Try a lot of new things that related the content creator and
+            creative way
+          </li>
+        </ul>
         <h1 className="text-[25px] md:text-[25px] mb-2">Tech Stack</h1>
         <div className="mb-4">
           {skills.map(skill => (
@@ -62,7 +75,6 @@ const Introduce = () => {
             />
           ))}
         </div>
-
         <Contact />
       </div>
       <div className="w-[400px] h-[400px] hidden relative lg:flex items-center rounded-full shadow-md shadow-green-300/50">
