@@ -25,9 +25,8 @@ const Introduce = () => {
         <h1 className="text-[35px] md:text-[35px]">
           Thanate Janyaswasdi(Boat)
         </h1>
-        <h1 className="text-[25px] md:text-[25px]">Leaner & Brewer</h1>
         <p className="break-words">
-          {`Hi everyone, i'm boat and now i looking jobs for content creator and tiktok . Please kind to me. 
+          {`Hi everyone, i'm boat nice to meet you!. 
           `}
         </p>
         <p className="mb-4 break-words">ありがとうございます.</p>
@@ -60,10 +59,7 @@ const Introduce = () => {
             create and editing for content i desire for my tiktok or for my
             friends
           </li>
-          <li>
-            Try a lot of new things that related the content creator and
-            creative way
-          </li>
+          <li>Try a lot of new things.</li>
         </ul>
         <h1 className="text-[25px] md:text-[25px] mb-2">Tech Stack</h1>
         <div className="mb-4">
