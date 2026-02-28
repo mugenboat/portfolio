@@ -41,18 +41,28 @@ const Experience = () => {
       id: 6,
       url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/chongnomst/videos/307033649895047",
     },
+    {
+      id: 7,
+      url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/863562169618474",
+    },
   ];
 
   return (
     <div>
       <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
-        this is some of my idea brainstorming with my friends since when i had
-        been university .
+        this is some of my idea brainstorming with my friends .
       </h2>
       <h2 className="flex justify-center items-center text-[15px] text-green-300 my-3">
-        watch me more in Tiktok :
+        watch me more in Tiktok :&nbsp;
         <a href="https://www.tiktok.com/@boattheblur" className="text-blue-300">
           boattheblur
+        </a>
+        &nbsp; and&nbsp;
+        <a
+          href="https://www.tiktok.com/@blurman_gamer"
+          className="text-blue-300"
+        >
+          blurman_gamer
         </a>
       </h2>
       <div className="w-[80%] mx-auto mt-6 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-[3rem] h-[100%] items-center justify-items-center">
