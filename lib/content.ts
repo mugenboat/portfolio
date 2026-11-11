@@ -107,8 +107,8 @@ export const content: Record<Lang, Dict> = {
     },
     intro: {
       title: "Hi, I'm Boat!",
-      p1: "Content marketer who plans, creates and runs content for a Thai consumer brand — from the monthly calendar and copy, to shooting short videos and running Facebook & TikTok Ads.",
-      p2: "Former frontend developer (4 years), so I'm comfortable with websites, data and tools — and I make decisions from numbers.",
+      p1: "I create content with both creativity and data — from strategy and producing photos and short-form videos, to working with influencers and running Facebook & TikTok Ads that put content in front of the right people.",
+      p2: "With a 4-year background as a frontend developer, I understand both the content side and the technical side — so I can measure, improve and work with other teams faster.",
     },
     work: {
       title: "My work includes",
@@ -243,8 +243,8 @@ export const content: Record<Lang, Dict> = {
     },
     intro: {
       title: "สวัสดีครับ ผมโบ๊ท!",
-      p1: "นักการตลาดคอนเทนต์ ที่วางแผน ผลิต และดูแลคอนเทนต์ให้แบรนด์สินค้าอุปโภคบริโภคของไทย ตั้งแต่ทำ content calendar เขียนแคปชัน ถ่ายและตัดต่อวิดีโอสั้น ไปจนถึงยิงโฆษณา Facebook และ TikTok",
-      p2: "ก่อนหน้านี้เป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ และตัดสินใจจากตัวเลขจริง",
+      p1: "ผมทำคอนเทนต์โดยใช้ทั้งความคิดสร้างสรรค์และข้อมูล ตั้งแต่วางกลยุทธ์ ผลิตภาพและวิดีโอสั้น ทำงานร่วมกับอินฟลูเอนเซอร์ ไปจนถึงยิงโฆษณา Facebook และ TikTok ให้คอนเทนต์ไปถึงคนที่ใช่",
+      p2: "ด้วยพื้นฐาน Frontend Developer 4 ปี ผมจึงเข้าใจทั้งฝั่งคอนเทนต์และฝั่งเทคนิค ช่วยให้วัดผล ปรับปรุง และทำงานกับทีมอื่นได้ไวขึ้น",
     },
     work: {
       title: "My work includes",
