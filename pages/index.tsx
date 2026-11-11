@@ -97,6 +97,7 @@ const slide = "w-[72%] shrink-0 snap-start border-4 border-ink bg-paper shadow-p
 export default function Home() {
   const { t } = useLanguage();
   const [tab, setTab] = useState<GalleryTab>("videos");
+  const [playing, setPlaying] = useState<number | null>(null);
 
   const openGallery = (next: GalleryTab) => {
     setTab(next);
@@ -319,26 +320,31 @@ export default function Home() {
             {tab === "videos" && (
               <>
                 <Carousel label={t.gallery.tabs.videos}>
-                  {videoThumbs.map((v, i) => (
-                    <a key={`thumb-${i}`} href={contact.brandFacebook} target="_blank" rel="noopener noreferrer" className={`${slide} group relative block overflow-hidden`}>
-                      <Image src={v} alt={`${t.gallery.tabs.videos} ${i + 1}`} placeholder="blur" className="aspect-[9/12] h-full w-full object-cover" sizes="(min-width: 1024px) 30vw, 72vw" />
-                      <span className="absolute inset-0 flex items-center justify-center">
-                        <span className="border-4 border-ink bg-sun p-3 shadow-px-sm transition-transform group-hover:scale-110">
-                          <PlayIcon className="h-6 w-6" />
-                        </span>
-                      </span>
-                    </a>
-                  ))}
-                  {facebookVideos.map(url => (
-                    <div key={url} className={`${slide} overflow-hidden`}>
-                      <iframe
-                        title={url}
-                        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`}
-                        loading="lazy"
-                        allowFullScreen
-                        allow="encrypted-media; picture-in-picture"
-                        className="aspect-[9/12] w-full bg-white"
-                      />
+                  {facebookVideos.map((url, i) => (
+                    <div key={url} className={`${slide} relative overflow-hidden`}>
+                      {playing === i ? (
+                        <iframe
+                          title={`${t.gallery.tabs.videos} ${i + 1}`}
+                          src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=360&autoplay=true`}
+                          allowFullScreen
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          className="aspect-[9/12] w-full bg-ink"
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setPlaying(i)}
+                          aria-label={`${t.gallery.play} ${i + 1}`}
+                          className="group flex aspect-[9/12] w-full flex-col items-center justify-center gap-5 bg-ink text-paper [background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.04)_0_2px,transparent_2px_4px)]"
+                        >
+                          <span className="border-4 border-paper bg-sun p-4 text-ink shadow-[4px_4px_0_#3fa66b] transition-transform group-hover:scale-110 group-active:translate-x-1 group-active:translate-y-1">
+                            <PlayIcon className="h-8 w-8" />
+                          </span>
+                          <span className="font-pixel text-[10px] uppercase">
+                            {t.gallery.play} {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </button>
+                      )}
                     </div>
                   ))}
                 </Carousel>
