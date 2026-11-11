@@ -1,5 +1,10 @@
 import Layout from "@/components/Layout";
 import { LanguageProvider } from "@/components/LanguageContext";
+import "@fontsource/press-start-2p/400.css";
+import "@fontsource/pixelify-sans/400.css";
+import "@fontsource/pixelify-sans/700.css";
+import "@fontsource/kanit/400.css";
+import "@fontsource/kanit/600.css";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -25,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="th_TH" />
         <meta name="twitter:card" content="summary" />
-        <meta name="theme-color" content="#0f3b2e" />
+        <meta name="theme-color" content="#1b1b2f" />
       </Head>
       <Layout>
         <Component {...pageProps} />

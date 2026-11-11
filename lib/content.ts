@@ -30,171 +30,140 @@ export const tools = [
   "Notion",
 ];
 
-export const devProjects = [
-  { name: "Geeers", logo: "geeers" },
-  { name: "Sansiri", logo: "sansiri" },
-  { name: "One Asset Management", logo: "one" },
-  { name: "Mez", logo: "mez" },
-] as const;
+export const brands = ["ศิริชัย 25", "Geeers", "Sansiri", "One Asset", "Mez"];
 
-type Job = {
-  period: string;
-  role: string;
-  company: string;
-  bullets: string[];
-  dev?: boolean;
-};
+export type GalleryTab = "videos" | "designs" | "calendar" | "tracker";
+
+type Card = { title: string; body: string };
 
 type Dict = {
-  nav: { experience: string; work: string; skills: string; contact: string };
+  nav: { work: string; caseStudy: string; gallery: string; inventory: string; contact: string };
   hero: {
-    eyebrow: string;
-    nickname: string;
-    summary: string;
-    background: string;
+    tag: string;
+    line1: string;
+    line2: string;
+    lead: string;
+    start: string;
+    connect: string;
     location: string;
-    ctaWork: string;
-    ctaContact: string;
-    focus: string[];
+    folders: { campaigns: string; calendar: string; videos: string; designs: string };
   };
-  experience: { title: string; jobs: Job[]; devProjectsLabel: string };
-  work: {
+  intro: { title: string; p1: string; p2: string; brands: string };
+  work: { title: string; sub: string; cards: Card[] };
+  caseStudy: {
+    label: string;
     title: string;
-    intro: string;
-    calendar: { title: string; body: string };
-    tracker: { title: string; body: string };
-    design: { title: string; body: string };
-    video: {
-      title: string;
-      body: string;
-      brandLinks: string;
-      personal: string;
-    };
+    brand: string;
+    quest: string;
+    questBody: string;
+    strategy: string;
+    strategyBody: string;
+    steps: string[];
+  };
+  gallery: {
+    title: string;
+    sub: string;
+    tabs: Record<GalleryTab, string>;
+    desc: Record<GalleryTab, string>;
     open: string;
+    watchOn: string;
   };
-  skills: {
+  inventory: {
     title: string;
-    marketing: string;
+    sub: string;
+    skills: string;
     tools: string;
-    languages: string;
-    languageList: string[];
+    log: string;
+    jobs: { period: string; role: string }[];
     education: string;
     degree: string;
-    school: string;
+    languages: string;
   };
-  contactSection: { title: string; body: string; emailMe: string; location: string };
+  contactSection: { line1: string; line2: string; continue: string; body: string; location: string };
   footer: string;
 };
 
 export const content: Record<Lang, Dict> = {
   en: {
     nav: {
-      experience: "Experience",
-      work: "Work",
-      skills: "Skills",
+      work: "My work",
+      caseStudy: "Case study",
+      gallery: "Gallery",
+      inventory: "Toolkit",
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Content & Digital Marketing",
-      nickname: "Boat",
-      summary:
-        "Content marketer with hands-on experience in content planning, influencer coordination and paid media on Facebook and TikTok. I build content strategies, run social campaigns and use performance data to grow engagement and reach.",
-      background:
-        "Before marketing I spent four years as a frontend developer — so I'm comfortable with websites, data and tools, and I make decisions from numbers.",
+      tag: "Player 1 : Content Marketer",
+      line1: "Content",
+      line2: "Portfolio",
+      lead: "Content & digital marketing portfolio — content planning, social campaigns, influencer collaborations and short-form video.",
+      start: "Press start",
+      connect: "Let's connect",
       location: "Chonburi, Thailand",
-      ctaWork: "See my work",
-      ctaContact: "Contact me",
-      focus: [
-        "Facebook · Instagram · TikTok",
-        "Meta & TikTok Ads",
-        "Influencer collaborations",
-        "Short-form video",
-      ],
+      folders: { campaigns: "Campaigns", calendar: "Calendar", videos: "Videos", designs: "Designs" },
     },
-    experience: {
-      title: "Experience",
-      devProjectsLabel: "Projects I worked on",
-      jobs: [
-        {
-          period: "2026 – Present",
-          role: "Content & Digital Marketing",
-          company: "Mah Boonkhrong Sirichai 25 Marketing Co., Ltd.",
-          bullets: [
-            "Plan monthly content calendars and create content for Facebook, TikTok, Instagram and Reels.",
-            "Manage Facebook Ads and TikTok Ads campaigns to grow reach, engagement and website traffic.",
-            "Run influencer collaborations end to end: outreach, briefing, negotiation, product seeding, content review and post tracking.",
-            "Analyze campaign performance and optimize content based on data.",
-            "Plan, shoot and edit short-form videos with a phone, CapCut and Canva — including ideas, hooks and scripts based on current trends.",
-          ],
-        },
-        {
-          period: "2025",
-          role: "Production Planner",
-          company: "Siam Carton Packaging Co., Ltd.",
-          bullets: [
-            "Planned and scheduled production to ensure on-time delivery, prioritizing by urgency and deadline.",
-            "Coordinated with sales and production teams to solve issues and align timelines.",
-            "Created a planning-system guide manual to improve the team's workflow.",
-          ],
-        },
-        {
-          period: "2024 – 2025",
-          role: "Digital Marketing Project (Self-employed)",
-          company: "Affiliate marketing",
-          bullets: [
-            "Built and managed Facebook pages for affiliate marketing.",
-            "Created the content strategy and social media content.",
-            "Learned and practiced Meta Ads and TikTok Ads; analyzed results with platform analytics.",
-          ],
-        },
-        {
-          period: "2019 – 2023",
-          role: "Frontend Developer",
-          company: "Geekstart Co., Ltd.",
-          dev: true,
-          bullets: [
-            "Built responsive, user-friendly web applications (Vue, Nuxt, React, Next.js) and worked with UI/UX designers to improve user experience.",
-          ],
-        },
-      ],
+    intro: {
+      title: "Hi, I'm Boat!",
+      p1: "Content marketer who plans, creates and runs content for a Thai consumer brand — from the monthly calendar and copy, to shooting short videos and running Facebook & TikTok Ads.",
+      p2: "Former frontend developer (4 years), so I'm comfortable with websites, data and tools — and I make decisions from numbers.",
+      brands: "Brands I've worked with",
     },
     work: {
-      title: "Selected work",
-      intro: "Examples from my day-to-day content marketing work.",
-      calendar: {
-        title: "Content calendar",
-        body: "A monthly plan for posts and videos — format, pillar, target audience and ad budget for each day.",
-      },
-      tracker: {
-        title: "Content performance tracker",
-        body: "Monthly tracking across Facebook, Instagram and TikTok: topics, objectives, ad budget allocation and results.",
-      },
-      design: {
-        title: "Content design",
-        body: "Selected visuals created as part of monthly content planning and campaign execution.",
-      },
-      video: {
-        title: "Content video",
-        body: "Promotional ads, social reels and creative campaign content — planned, shot and edited by me.",
-        brandLinks: "Watch on the brand's channels",
-        personal: "My personal channels",
+      title: "My work includes",
+      sub: "Choose your skill",
+      cards: [
+        { title: "Short-form video", body: "Plan, shoot and edit reels with a phone, CapCut and Canva — ideas, hooks and scripts from current trends." },
+        { title: "Content calendar", body: "Monthly plans for posts and videos: format, pillar, audience and ad budget for each day." },
+        { title: "Performance tracker", body: "Tracking topics, objectives, ad spend and results across Facebook, Instagram and TikTok." },
+        { title: "Content design", body: "On-brand visuals created for monthly content plans and campaigns." },
+        { title: "Influencer collab", body: "End to end: outreach, briefing, negotiation, product seeding, content review and post tracking." },
+        { title: "Paid social ads", body: "Facebook Ads and TikTok Ads campaigns that grow reach, engagement and website traffic." },
+      ],
+    },
+    caseStudy: {
+      label: "Boss level : Case study 01",
+      title: "Grow Together",
+      brand: "Sirichai 25 · Goat milk",
+      quest: "Quest",
+      questBody: "Make goat milk feel like an everyday family choice, with one consistent message across Facebook, Instagram and TikTok.",
+      strategy: "Strategy",
+      strategyBody: "A monthly content plan built on a \"Grow Together\" family theme — single photos, albums, influencer posts and short videos, boosted by targeted ads.",
+      steps: ["Plan", "Create", "Influence", "Boost"],
+    },
+    gallery: {
+      title: "Videos & designs",
+      sub: "← swipe to play →",
+      tabs: { videos: "Videos", designs: "Designs", calendar: "Calendar", tracker: "Tracker" },
+      desc: {
+        videos: "Promotional ads, social reels and campaign content — planned, shot and edited by me.",
+        designs: "Selected visuals from monthly content planning and campaign execution.",
+        calendar: "A monthly plan for posts and videos — format, pillar, target audience and ad budget for each day.",
+        tracker: "Monthly tracking across Facebook, Instagram and TikTok: topics, objectives, ad budget and results.",
       },
       open: "Click to view full size",
+      watchOn: "More on the brand's page",
     },
-    skills: {
-      title: "Skills & tools",
-      marketing: "Marketing skills",
-      tools: "Tools",
-      languages: "Languages",
-      languageList: ["Thai", "English"],
+    inventory: {
+      title: "Inventory",
+      sub: "Skills, tools & experience unlocked",
+      skills: "skills.txt",
+      tools: "tools.txt",
+      log: "save_file.log",
+      jobs: [
+        { period: "2026 – Now", role: "Content & Digital Marketing · Mah Boonkhrong Sirichai 25 Marketing" },
+        { period: "2025", role: "Production Planner · Siam Carton Packaging" },
+        { period: "2024 – 2025", role: "Digital Marketing Project (Self-employed)" },
+        { period: "2019 – 2023", role: "Frontend Developer · Geekstart" },
+      ],
       education: "Education",
-      degree: "Bachelor of Science — Business / Technology",
-      school: "Thai-Nichi Institute of Technology",
+      degree: "BS Business / Technology · Thai-Nichi Institute of Technology",
+      languages: "Languages: Thai, English",
     },
     contactSection: {
-      title: "Let's work together",
-      body: "Open to Digital Marketing and Content Marketing roles. The fastest way to reach me is email.",
-      emailMe: "Email me",
+      line1: "Ready for",
+      line2: "Player 2?",
+      continue: "> Continue? 10... 9... 8...",
+      body: "Open to Digital Marketing and Content Marketing roles.",
       location: "Based in Chonburi, Thailand",
     },
     footer: "Built by Thanate Janyaswasdi",
@@ -202,112 +171,84 @@ export const content: Record<Lang, Dict> = {
 
   th: {
     nav: {
-      experience: "ประสบการณ์",
       work: "ผลงาน",
-      skills: "ทักษะ",
+      caseStudy: "เคสตัวอย่าง",
+      gallery: "แกลเลอรี",
+      inventory: "ทักษะ",
       contact: "ติดต่อ",
     },
     hero: {
-      eyebrow: "Content & Digital Marketing",
-      nickname: "โบ๊ท",
-      summary:
-        "นักการตลาดคอนเทนต์ ที่มีประสบการณ์วางแผนคอนเทนต์ ประสานงานอินฟลูเอนเซอร์ และยิงโฆษณาบน Facebook และ TikTok ถนัดวางกลยุทธ์คอนเทนต์ ดูแลแคมเปญโซเชียลมีเดีย และใช้ข้อมูลผลลัพธ์มาปรับให้ได้ยอด engagement และ reach ที่ดีขึ้น",
-      background:
-        "ก่อนมาทำการตลาด ผมเป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ และตัดสินใจจากตัวเลขจริง",
+      tag: "Player 1 : นักการตลาดคอนเทนต์",
+      line1: "Content",
+      line2: "Portfolio",
+      lead: "พอร์ตโฟลิโอสายคอนเทนต์และดิจิทัลมาร์เก็ตติ้ง ทั้งวางแผนคอนเทนต์ แคมเปญโซเชียล งานอินฟลูเอนเซอร์ และวิดีโอสั้น",
+      start: "Press start",
+      connect: "ติดต่อผม",
       location: "ชลบุรี ประเทศไทย",
-      ctaWork: "ดูผลงาน",
-      ctaContact: "ติดต่อผม",
-      focus: [
-        "Facebook · Instagram · TikTok",
-        "โฆษณา Meta และ TikTok",
-        "งานอินฟลูเอนเซอร์",
-        "วิดีโอสั้น",
-      ],
+      folders: { campaigns: "แคมเปญ", calendar: "แผนคอนเทนต์", videos: "วิดีโอ", designs: "งานดีไซน์" },
     },
-    experience: {
-      title: "ประสบการณ์",
-      devProjectsLabel: "โปรเจกต์ที่เคยร่วมพัฒนา",
-      jobs: [
-        {
-          period: "2026 – ปัจจุบัน",
-          role: "Content & Digital Marketing",
-          company: "Mah Boonkhrong Sirichai 25 Marketing Co., Ltd.",
-          bullets: [
-            "วางแผน content calendar รายเดือน และผลิตคอนเทนต์สำหรับ Facebook, TikTok, Instagram และ Reels",
-            "ดูแลแคมเปญ Facebook Ads และ TikTok Ads เพื่อเพิ่ม reach, engagement และทราฟฟิกเข้าเว็บไซต์",
-            "ดูแลงานอินฟลูเอนเซอร์ครบวงจร ตั้งแต่ติดต่อ บรีฟ ต่อรอง ส่งสินค้า ตรวจคอนเทนต์ ไปจนถึงติดตามโพสต์",
-            "วิเคราะห์ผลแคมเปญ และปรับคอนเทนต์ตามข้อมูลที่ได้",
-            "วางแผน ถ่าย และตัดต่อวิดีโอสั้นด้วยมือถือ CapCut และ Canva รวมถึงคิดไอเดีย hook และสคริปต์จากเทรนด์ปัจจุบัน",
-          ],
-        },
-        {
-          period: "2025",
-          role: "Production Planner",
-          company: "Siam Carton Packaging Co., Ltd.",
-          bullets: [
-            "วางแผนและจัดตารางการผลิตให้ส่งงานตรงเวลา โดยจัดลำดับตามความเร่งด่วนและกำหนดส่ง",
-            "ประสานงานกับทีมขายและทีมผลิตเพื่อแก้ปัญหาและวางไทม์ไลน์ให้ตรงกัน",
-            "จัดทำคู่มือการใช้ระบบวางแผน เพื่อให้ทีมทำงานได้ราบรื่นขึ้น",
-          ],
-        },
-        {
-          period: "2024 – 2025",
-          role: "Digital Marketing Project (ทำเอง)",
-          company: "Affiliate marketing",
-          bullets: [
-            "สร้างและดูแลเพจ Facebook สำหรับทำ affiliate marketing",
-            "วางกลยุทธ์คอนเทนต์และผลิตคอนเทนต์โซเชียลมีเดีย",
-            "ศึกษาและฝึกยิงโฆษณา Meta Ads และ TikTok Ads พร้อมวิเคราะห์ผลด้วย analytics ของแพลตฟอร์ม",
-          ],
-        },
-        {
-          period: "2019 – 2023",
-          role: "Frontend Developer",
-          company: "Geekstart Co., Ltd.",
-          dev: true,
-          bullets: [
-            "พัฒนาเว็บแอปพลิเคชันแบบ responsive (Vue, Nuxt, React, Next.js) และทำงานร่วมกับ UI/UX designer เพื่อปรับประสบการณ์ผู้ใช้",
-          ],
-        },
-      ],
+    intro: {
+      title: "สวัสดีครับ ผมโบ๊ท!",
+      p1: "นักการตลาดคอนเทนต์ ที่วางแผน ผลิต และดูแลคอนเทนต์ให้แบรนด์สินค้าอุปโภคบริโภคของไทย ตั้งแต่ทำ content calendar เขียนแคปชัน ถ่ายและตัดต่อวิดีโอสั้น ไปจนถึงยิงโฆษณา Facebook และ TikTok",
+      p2: "ก่อนหน้านี้เป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ และตัดสินใจจากตัวเลขจริง",
+      brands: "แบรนด์ที่เคยร่วมงาน",
     },
     work: {
-      title: "ผลงานที่คัดมา",
-      intro: "ตัวอย่างงานจากการทำคอนเทนต์มาร์เก็ตติ้งในแต่ละวัน",
-      calendar: {
-        title: "Content calendar",
-        body: "แผนโพสต์และวิดีโอรายเดือน ระบุรูปแบบ หมวดคอนเทนต์ กลุ่มเป้าหมาย และงบโฆษณาของแต่ละวัน",
-      },
-      tracker: {
-        title: "ตารางติดตามผลคอนเทนต์",
-        body: "ติดตามผลรายเดือนบน Facebook, Instagram และ TikTok ทั้งหัวข้อ วัตถุประสงค์ การแบ่งงบโฆษณา และผลลัพธ์",
-      },
-      design: {
-        title: "งานออกแบบคอนเทนต์",
-        body: "ตัวอย่างภาพที่ทำขึ้นตามแผนคอนเทนต์รายเดือนและแคมเปญ",
-      },
-      video: {
-        title: "วิดีโอคอนเทนต์",
-        body: "โฆษณา รีลโซเชียล และคอนเทนต์แคมเปญ ที่ผมวางแผน ถ่าย และตัดต่อเอง",
-        brandLinks: "ดูได้ที่ช่องของแบรนด์",
-        personal: "ช่องส่วนตัวของผม",
+      title: "My work includes",
+      sub: "เลือกสกิลที่อยากดู",
+      cards: [
+        { title: "วิดีโอสั้น", body: "วางแผน ถ่าย และตัดต่อรีลด้วยมือถือ CapCut และ Canva รวมถึงคิดไอเดีย hook และสคริปต์จากเทรนด์" },
+        { title: "Content calendar", body: "แผนโพสต์และวิดีโอรายเดือน ระบุรูปแบบ หมวดคอนเทนต์ กลุ่มเป้าหมาย และงบโฆษณาของแต่ละวัน" },
+        { title: "ติดตามผลคอนเทนต์", body: "ติดตามหัวข้อ วัตถุประสงค์ งบโฆษณา และผลลัพธ์บน Facebook, Instagram และ TikTok" },
+        { title: "ออกแบบคอนเทนต์", body: "ภาพคอนเทนต์ตามแผนรายเดือนและแคมเปญ ให้ตรงกับแบรนด์" },
+        { title: "งานอินฟลูเอนเซอร์", body: "ครบวงจร ตั้งแต่ติดต่อ บรีฟ ต่อรอง ส่งสินค้า ตรวจคอนเทนต์ จนถึงติดตามโพสต์" },
+        { title: "โฆษณาโซเชียล", body: "ดูแลแคมเปญ Facebook Ads และ TikTok Ads เพื่อเพิ่ม reach, engagement และทราฟฟิกเข้าเว็บไซต์" },
+      ],
+    },
+    caseStudy: {
+      label: "Boss level : เคสตัวอย่าง 01",
+      title: "Grow Together",
+      brand: "ศิริชัย 25 · นมแพะ",
+      quest: "โจทย์",
+      questBody: "ทำให้นมแพะเป็นตัวเลือกประจำวันของครอบครัว และสื่อสารข้อความเดียวกันบน Facebook, Instagram และ TikTok",
+      strategy: "กลยุทธ์",
+      strategyBody: "วางแผนคอนเทนต์รายเดือนภายใต้ธีมครอบครัว \"Grow Together\" ทั้งภาพเดี่ยว อัลบั้ม โพสต์อินฟลูเอนเซอร์ และวิดีโอสั้น พร้อมยิงโฆษณาไปยังกลุ่มเป้าหมาย",
+      steps: ["วางแผน", "ผลิต", "อินฟลูฯ", "บูสต์"],
+    },
+    gallery: {
+      title: "Videos & designs",
+      sub: "← ปัดเพื่อดูเพิ่ม →",
+      tabs: { videos: "วิดีโอ", designs: "งานดีไซน์", calendar: "แผนคอนเทนต์", tracker: "ตารางติดตามผล" },
+      desc: {
+        videos: "โฆษณา รีลโซเชียล และคอนเทนต์แคมเปญ ที่ผมวางแผน ถ่าย และตัดต่อเอง",
+        designs: "ตัวอย่างภาพจากแผนคอนเทนต์รายเดือนและแคมเปญ",
+        calendar: "แผนโพสต์และวิดีโอรายเดือน ระบุรูปแบบ หมวดคอนเทนต์ กลุ่มเป้าหมาย และงบโฆษณาของแต่ละวัน",
+        tracker: "ติดตามผลรายเดือนบน Facebook, Instagram และ TikTok ทั้งหัวข้อ วัตถุประสงค์ งบโฆษณา และผลลัพธ์",
       },
       open: "คลิกเพื่อดูภาพเต็ม",
+      watchOn: "ดูเพิ่มเติมที่เพจของแบรนด์",
     },
-    skills: {
-      title: "ทักษะและเครื่องมือ",
-      marketing: "ทักษะการตลาด",
-      tools: "เครื่องมือ",
-      languages: "ภาษา",
-      languageList: ["ไทย", "อังกฤษ"],
+    inventory: {
+      title: "Inventory",
+      sub: "ทักษะ เครื่องมือ และประสบการณ์ที่ปลดล็อกแล้ว",
+      skills: "skills.txt",
+      tools: "tools.txt",
+      log: "save_file.log",
+      jobs: [
+        { period: "2026 – ปัจจุบัน", role: "Content & Digital Marketing · Mah Boonkhrong Sirichai 25 Marketing" },
+        { period: "2025", role: "Production Planner · Siam Carton Packaging" },
+        { period: "2024 – 2025", role: "Digital Marketing Project (ทำเอง)" },
+        { period: "2019 – 2023", role: "Frontend Developer · Geekstart" },
+      ],
       education: "การศึกษา",
-      degree: "วิทยาศาสตรบัณฑิต — Business / Technology",
-      school: "สถาบันเทคโนโลยีไทย-ญี่ปุ่น",
+      degree: "วิทยาศาสตรบัณฑิต Business / Technology · สถาบันเทคโนโลยีไทย-ญี่ปุ่น",
+      languages: "ภาษา: ไทย, อังกฤษ",
     },
     contactSection: {
-      title: "มาร่วมงานกัน",
-      body: "เปิดรับตำแหน่ง Digital Marketing และ Content Marketing ติดต่อทางอีเมลได้เร็วที่สุด",
-      emailMe: "ส่งอีเมล",
+      line1: "Ready for",
+      line2: "Player 2?",
+      continue: "> Continue? 10... 9... 8...",
+      body: "เปิดรับตำแหน่ง Digital Marketing และ Content Marketing",
       location: "อยู่ที่ชลบุรี ประเทศไทย",
     },
     footer: "สร้างโดย Thanate Janyaswasdi",

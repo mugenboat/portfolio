@@ -1,3 +1,13 @@
+/* Thai glyphs inside pixel-font text: Press Start 2P has no Thai, and Kanit at the
+   same pixel size looks tiny next to it, so this alias scales only Thai glyphs up. */
+@font-face {
+  font-family: "Kanit Px";
+  src: url("../node_modules/@fontsource/kanit/files/kanit-thai-600-normal.woff2") format("woff2");
+  unicode-range: U+0E00-0E7F;
+  size-adjust: 165%;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,11 +17,15 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-paper font-sans text-ink antialiased;
+    @apply bg-bg font-sans text-ink antialiased;
+    font-size: 18px;
+    background-image: linear-gradient(rgba(27, 27, 47, 0.06) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(27, 27, 47, 0.06) 2px, transparent 2px);
+    background-size: 32px 32px;
   }
-  :lang(th) body,
   html[lang="th"] body {
-    line-height: 1.7;
+    font-family: Kanit, "Pixelify Sans", system-ui, sans-serif;
+    font-size: 17px;
   }
 }
 
@@ -19,28 +33,54 @@
   .container-page {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
-  .eyebrow {
-    @apply inline-block rounded-full bg-mint px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-forest;
+  .px-title {
+    @apply font-pixel uppercase leading-tight;
+  }
+  .box {
+    @apply relative border-4 border-ink bg-paper shadow-px;
+  }
+  .win-bar {
+    @apply flex items-center justify-between border-b-4 border-ink bg-forest px-3 py-1.5 font-pixel text-[10px] text-white;
+  }
+  .win-bar i {
+    @apply ml-1.5 inline-block h-3 w-3 border-2 border-ink bg-sun;
+  }
+  .btn-px {
+    @apply inline-block border-4 border-ink bg-green px-5 py-3.5 font-pixel text-xs uppercase text-white shadow-px transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-px-sm active:translate-x-[6px] active:translate-y-[6px] active:shadow-none;
+  }
+  .btn-px.alt {
+    @apply bg-sun text-ink;
+  }
+  .section-band {
+    @apply border-y-4 border-ink bg-paper/70;
   }
   .section-title {
-    @apply mb-10 font-display text-3xl font-bold tracking-tight sm:text-4xl;
+    @apply px-title text-center text-2xl sm:text-4xl;
   }
-  .sub-title {
-    @apply mb-3 text-sm font-semibold uppercase tracking-wider text-muted;
+  .section-sub {
+    @apply mb-10 mt-3 text-center text-lg text-muted;
   }
-  .work-number {
-    @apply font-display text-sm font-bold text-accent;
-  }
-  .work-title {
-    @apply mt-1 font-display text-2xl font-bold;
+  .chip {
+    @apply border-[3px] border-ink bg-bg px-2 py-1 text-base;
   }
   .nav-link {
-    @apply relative text-sm font-medium text-muted transition-colors hover:text-ink after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:content-[''] hover:after:scale-x-100;
+    @apply font-pixel text-[11px] uppercase transition-colors hover:text-green;
   }
-  .btn-primary {
-    @apply inline-flex items-center rounded-full bg-forest px-6 py-3 font-semibold text-white transition hover:bg-accent;
+  .folder {
+    @apply absolute z-10 w-24 text-center font-pixel text-[8px] uppercase transition-transform hover:-translate-y-1;
   }
-  .btn-secondary {
-    @apply inline-flex items-center rounded-full border border-ink/15 bg-white px-6 py-3 font-semibold text-ink transition hover:border-accent hover:text-accent;
+  .folder i {
+    @apply relative mb-1.5 block h-14 border-4 border-ink shadow-px-sm;
+  }
+  .folder i::before {
+    content: "";
+    @apply absolute -left-1 -top-3.5 h-3.5 w-[46%] border-4 border-b-0 border-ink;
+    background: inherit;
+  }
+  .folder em {
+    @apply border-2 border-ink bg-paper px-1 py-0.5 not-italic;
+  }
+  .pixelated {
+    image-rendering: pixelated;
   }
 }

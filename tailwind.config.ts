@@ -5,17 +5,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#faf9f6",
-        ink: "#16211d",
-        muted: "#5b6762",
-        line: "#dfe3df",
-        forest: "#0f3b2e",
-        accent: "#1d7a58",
-        mint: "#e4f1ea",
+        bg: "#f3eedc",
+        ink: "#1b1b2f",
+        paper: "#fffdf6",
+        green: "#3fa66b",
+        forest: "#17402f",
+        sky: "#5aa9e6",
+        pink: "#ff8fab",
+        sun: "#ffd166",
+        grape: "#9b8cff",
+        muted: "#55566b",
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', '"IBM Plex Sans Thai"', "system-ui", "sans-serif"],
-        display: ['"Plus Jakarta Sans"', '"IBM Plex Sans Thai"', "system-ui", "sans-serif"],
+        sans: ['"Pixelify Sans"', "Kanit", "system-ui", "sans-serif"],
+        pixel: ['"Press Start 2P"', '"Kanit Px"', "Kanit", "monospace"],
+      },
+      boxShadow: {
+        px: "6px 6px 0 #1b1b2f",
+        "px-sm": "4px 4px 0 #1b1b2f",
       },
     },
   },

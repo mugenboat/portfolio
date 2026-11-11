@@ -1,240 +1,436 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import { ChevronDownIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowUpRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EnvelopeIcon,
+  PlayIcon,
+} from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
-import WorkSection from "@/components/WorkSection";
-import { contact, devProjects, marketingSkills, tools } from "@/lib/content";
+import { brands, contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
-import geeers from "@/public/geeers.png";
-import sansiri from "@/public/sansiri.png";
-import one from "@/public/one.png";
-import mez from "@/public/mez.png";
+import profilePixel from "@/assets/profile-pixel.png";
+import calendar from "@/assets/work/content-calendar.jpg";
+import tracker from "@/assets/work/performance-tracker.jpg";
+import design1 from "@/assets/work/design-1.jpg";
+import design2 from "@/assets/work/design-2.jpg";
+import design3 from "@/assets/work/design-3.jpg";
+import design4 from "@/assets/work/design-4.jpg";
+import design5 from "@/assets/work/design-5.jpg";
+import design6 from "@/assets/work/design-6.jpg";
+import video1 from "@/assets/work/video-1.jpg";
+import video2 from "@/assets/work/video-2.jpg";
+import video3 from "@/assets/work/video-3.jpg";
 
-const logos: Record<string, StaticImageData> = { geeers, sansiri, one, mez };
+const designs = [design1, design2, design3, design4, design5, design6];
+const videoThumbs = [video1, video2, video3];
+const facebookVideos = [
+  "https://www.facebook.com/chongnomst/videos/1780449818702034/",
+  "https://www.facebook.com/chongnomst/videos/2119944344786195/",
+  "https://www.facebook.com/chongnomst/videos/1926046817475666",
+  "https://www.facebook.com/chongnomst/videos/2205632489531585/",
+  "https://www.facebook.com/chongnomst/videos/738362913227850/",
+  "https://www.facebook.com/chongnomst/videos/307033649895047",
+  "https://www.facebook.com/reel/863562169618474",
+];
+const stepColors = ["bg-sun", "bg-pink", "bg-sky", "bg-green text-white"];
 
-function Section({
-  id,
-  title,
-  children,
-  className = "",
-}: {
-  id: string;
-  title: string;
-  children: ReactNode;
-  className?: string;
-}) {
+/* ---------- small building blocks ---------- */
+
+function WinBox({ title, children, className = "" }: { title: string; children: ReactNode; className?: string }) {
   return (
-    <section id={id} className={`scroll-mt-20 py-14 md:py-20 ${className}`}>
-      <div className="container-page">
-        <h2 className="section-title">{title}</h2>
+    <div className={`box ${className}`}>
+      <div className="win-bar">
+        <span>{title}</span>
+        <span aria-hidden>
+          <i />
+          <i />
+        </span>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function ZoomImage({ src, alt, hint, imgClass = "h-auto w-full" }: { src: StaticImageData; alt: string; hint: string; imgClass?: string }) {
+  return (
+    <a href={src.src} target="_blank" rel="noopener noreferrer" title={hint} className="block overflow-hidden">
+      <Image src={src} alt={alt} placeholder="blur" className={imgClass} sizes="(min-width: 1024px) 60vw, 100vw" />
+    </a>
+  );
+}
+
+function Carousel({ children, label }: { children: ReactNode; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const scroll = (dir: 1 | -1) => {
+    const el = ref.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+  const arrow = "absolute top-1/2 z-10 hidden -translate-y-1/2 border-4 border-ink bg-sun p-2 shadow-px-sm hover:bg-paper md:block";
+  return (
+    <div className="relative">
+      <div
+        ref={ref}
+        role="region"
+        aria-label={label}
+        className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-5 pt-1 sm:-mx-8 sm:px-8"
+      >
         {children}
       </div>
-    </section>
+      <button type="button" onClick={() => scroll(-1)} aria-label="Previous" className={`${arrow} -left-5`}>
+        <ChevronLeftIcon className="h-5 w-5" />
+      </button>
+      <button type="button" onClick={() => scroll(1)} aria-label="Next" className={`${arrow} -right-5`}>
+        <ChevronRightIcon className="h-5 w-5" />
+      </button>
+    </div>
   );
 }
 
-function Tag({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm text-ink">
-      {children}
-    </span>
-  );
-}
+const slide = "w-[72%] shrink-0 snap-start border-4 border-ink bg-paper shadow-px sm:w-[44%] lg:w-[29%]";
+
+/* ---------- page ---------- */
 
 export default function Home() {
   const { t } = useLanguage();
+  const [tab, setTab] = useState<GalleryTab>("videos");
+
+  const openGallery = (next: GalleryTab) => {
+    setTab(next);
+    document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const workThumbs: ReactNode[] = [
+    <div key="v" className="grid h-full grid-cols-3 gap-1 bg-ink p-1">
+      {videoThumbs.map((v, i) => (
+        <Image key={i} src={v} alt="" className="h-full w-full object-cover" sizes="120px" />
+      ))}
+    </div>,
+    <Image key="c" src={calendar} alt="" className="h-full w-full object-cover object-top" sizes="360px" />,
+    <Image key="t" src={tracker} alt="" className="h-full w-full object-cover object-left-top" sizes="360px" />,
+    <div key="d" className="grid h-full grid-cols-3 gap-1 bg-ink p-1">
+      {[design1, design3, design4].map((d, i) => (
+        <Image key={i} src={d} alt="" className="h-full w-full object-cover" sizes="120px" />
+      ))}
+    </div>,
+    <div key="i" className="flex h-full flex-col items-center justify-center gap-2 bg-pink font-pixel text-sm">
+      INFLUENCER<span className="text-xs">★ ★ ★</span>
+    </div>,
+    <div key="a" className="flex h-full items-center justify-center bg-sky text-center font-pixel text-sm leading-relaxed">
+      META +<br />TIKTOK ADS
+    </div>,
+  ];
+  const workTargets: (GalleryTab | "case" | null)[] = ["videos", "calendar", "tracker", "designs", null, null];
 
   return (
     <>
-      {/* Hero */}
-      <section className="pb-16 pt-10 md:pb-24 md:pt-16">
-        <div className="container-page grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
+      {/* ===== Hero ===== */}
+      <section className="pb-20 pt-8 md:pb-24 md:pt-12">
+        <div className="container-page grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div>
-            <p className="eyebrow">{t.hero.eyebrow}</p>
-            <h1 className="mt-4 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Thanate Janyaswasdi
-              <span className="block text-2xl font-semibold text-muted sm:text-3xl">
-                ({t.hero.nickname})
-              </span>
+            <span className="inline-block bg-ink px-2.5 py-2 font-pixel text-[9px] uppercase text-sun sm:text-[10px]">
+              ▶ {t.hero.tag}
+            </span>
+            <h1 className="px-title mt-6 text-[34px] sm:text-5xl lg:text-[58px]">
+              {t.hero.line1}
+              <span className="mt-2 block text-green [text-shadow:4px_4px_0_#17402f]">{t.hero.line2}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.hero.summary}</p>
-            <p className="mt-3 max-w-xl leading-relaxed text-muted">{t.hero.background}</p>
-            <p className="mt-4 inline-flex items-center gap-1.5 text-sm text-muted">
-              <MapPinIcon className="h-4 w-4" /> {t.hero.location}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#work" className="btn-primary">
-                {t.hero.ctaWork}
+            <p className="mt-6 max-w-lg text-xl leading-snug">{t.hero.lead}</p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#work" className="btn-px">
+                {t.hero.start}
               </a>
-              <a href="#contact" className="btn-secondary">
-                {t.hero.ctaContact}
+              <a href="#contact" className="btn-px alt">
+                {t.hero.connect}
               </a>
             </div>
+            <div className="mt-8 flex flex-wrap gap-3 font-pixel text-[9px] uppercase">
+              <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={contact.lemon8} target="_blank" rel="noopener noreferrer">Lemon8</a>
+              <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={`mailto:${contact.email}`}>Email</a>
+            </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[340px]">
-            <div className="absolute -inset-3 rounded-full bg-mint" aria-hidden />
-            <Image
-              src={profile}
-              alt="Thanate Janyaswasdi"
-              priority
-              className="relative aspect-square w-full rounded-full object-cover shadow-lg"
-              sizes="340px"
-            />
+
+          {/* character card + folders */}
+          <div className="relative mx-auto h-[400px] w-[320px] sm:h-[470px] sm:w-[440px]">
+            <div className="box absolute left-[30px] top-[36px] w-[260px] sm:left-[40px] sm:w-[360px]">
+              <div className="win-bar">
+                <span>boat.png</span>
+                <span aria-hidden><i /><i /></span>
+              </div>
+              <Image src={profilePixel} alt="Thanate Janyaswasdi (Boat)" priority className="pixelated block h-[230px] w-full object-cover sm:h-[320px]" sizes="360px" />
+              <div className="border-t-4 border-ink bg-sun py-2.5 text-center font-pixel text-[10px] sm:text-[11px]">
+                THANATE (BOAT)
+              </div>
+            </div>
+            <button type="button" onClick={() => document.getElementById("case-study")?.scrollIntoView({ behavior: "smooth" })} className="folder -left-8 -top-2 sm:-left-10">
+              <i className="bg-pink" />
+              <em>{t.hero.folders.campaigns}</em>
+            </button>
+            <button type="button" onClick={() => openGallery("calendar")} className="folder -right-4 top-16 sm:-right-10">
+              <i className="bg-sun" />
+              <em>{t.hero.folders.calendar}</em>
+            </button>
+            <button type="button" onClick={() => openGallery("videos")} className="folder -left-6 top-56 sm:-left-12 sm:top-60">
+              <i className="bg-sky" />
+              <em>{t.hero.folders.videos}</em>
+            </button>
+            <button type="button" onClick={() => openGallery("designs")} className="folder -right-6 top-64 sm:-right-12 sm:top-72">
+              <i className="bg-grape" />
+              <em>{t.hero.folders.designs}</em>
+            </button>
+            <span aria-hidden className="absolute bottom-2 left-8 h-7 w-7 border-4 border-ink bg-sun shadow-[inset_-4px_-4px_0_#e0a800]" />
+            <span aria-hidden className="absolute bottom-0 left-20 h-7 w-7 border-4 border-ink bg-sun shadow-[inset_-4px_-4px_0_#e0a800]" />
           </div>
-        </div>
-        <div className="container-page mt-14">
-          <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {t.hero.focus.map(f => (
-              <li
-                key={f}
-                className="rounded-xl border border-line bg-white px-4 py-3 text-center text-sm font-medium"
-              >
-                {f}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
-      {/* Experience */}
-      <Section id="experience" title={t.experience.title}>
-        <ol className="relative space-y-6 border-l border-line pl-6 md:pl-10">
-          {t.experience.jobs.map((job, i) => {
-            const details = (
-              <>
-                <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink/85 marker:text-line">
-                  {job.bullets.map(b => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-                {job.dev && (
-                  <div className="mt-4">
-                    <p className="mb-2 text-sm text-muted">{t.experience.devProjectsLabel}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {devProjects.map(p => (
-                        <span
-                          key={p.name}
-                          className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3 text-sm"
-                        >
-                          <Image
-                            src={logos[p.logo]}
-                            alt=""
-                            width={22}
-                            height={22}
-                            className="rounded-full"
-                          />
-                          {p.name}
-                        </span>
-                      ))}
-                    </div>
+      {/* ===== Intro + work ===== */}
+      <section id="work" className="section-band scroll-mt-16 py-16 md:py-20">
+        <div className="container-page">
+          <div className="grid items-center gap-10 md:grid-cols-[300px_1fr]">
+            <WinBox title="profile.jpg" className="mx-auto w-full max-w-[300px]">
+              <Image src={profile} alt="Thanate Janyaswasdi" className="block aspect-square w-full object-cover" sizes="300px" />
+            </WinBox>
+            <div className="box p-6 sm:p-8">
+              <h2 className="px-title text-xl sm:text-2xl">{t.intro.title}</h2>
+              <p className="mt-4 text-lg leading-relaxed">{t.intro.p1}</p>
+              <p className="mt-3 text-lg leading-relaxed text-muted">{t.intro.p2}</p>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-4 border-ink bg-ink px-5 py-3 text-paper shadow-[6px_6px_0_#3fa66b]">
+            <span className="font-pixel text-[9px] uppercase text-sun sm:text-[10px]">{t.intro.brands} ▶</span>
+            {brands.map(b => (
+              <span key={b} className="font-pixel text-[10px] uppercase leading-none">
+                {b}
+              </span>
+            ))}
+          </div>
+
+          <h2 className="section-title mt-20">{t.work.title}</h2>
+          <p className="section-sub">
+            <span className="bg-sun px-1.5 text-ink">{t.work.sub}</span> ↓
+          </p>
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {t.work.cards.map((c, i) => {
+              const target = workTargets[i];
+              const inner = (
+                <>
+                  <div className="h-40 overflow-hidden border-b-4 border-ink bg-white">{workThumbs[i]}</div>
+                  <div className="p-4">
+                    <p className="font-pixel text-[9px] text-green">LV.0{i + 1}</p>
+                    <h3 className="mt-1.5 font-pixel text-[11px] uppercase leading-relaxed">{c.title}</h3>
+                    <p className="mt-2 leading-snug text-muted">{c.body}</p>
                   </div>
-                )}
-              </>
-            );
-            const heading = (
-              <>
-                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                  {job.period}
-                </p>
-                <h3 className="mt-1 font-display text-xl font-bold">{job.role}</h3>
-                <p className="text-muted">{job.company}</p>
-              </>
-            );
-            return (
-              <li key={job.role + job.period} className="relative">
-                <span
-                  className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 md:-left-[47px] ${
-                    job.dev ? "border-muted bg-paper" : "border-accent bg-accent"
-                  }`}
-                  aria-hidden
-                />
-                {i === 0 ? (
-                  <>
-                    {heading}
-                    {details}
-                  </>
-                ) : (
-                  <details className="group">
-                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
-                      <div>{heading}</div>
-                      <ChevronDownIcon
-                        className="mt-6 h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180"
-                        aria-hidden
-                      />
-                    </summary>
-                    {details}
-                  </details>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </Section>
-
-      <WorkSection />
-
-      {/* Skills */}
-      <Section id="skills" title={t.skills.title}>
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <h3 className="sub-title">{t.skills.marketing}</h3>
-            <div className="flex flex-wrap gap-2">
-              {marketingSkills.map(s => (
-                <Tag key={s}>{s}</Tag>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="sub-title">{t.skills.tools}</h3>
-            <div className="flex flex-wrap gap-2">
-              {tools.map(s => (
-                <Tag key={s}>{s}</Tag>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="sub-title">{t.skills.languages}</h3>
-            <div className="flex flex-wrap gap-2">
-              {t.skills.languageList.map(s => (
-                <Tag key={s}>{s}</Tag>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="sub-title">{t.skills.education}</h3>
-            <p className="font-medium">{t.skills.degree}</p>
-            <p className="text-muted">{t.skills.school}</p>
+                </>
+              );
+              return target ? (
+                <button
+                  key={c.title}
+                  type="button"
+                  onClick={() => openGallery(target as GalleryTab)}
+                  className="box text-left transition-transform hover:-translate-y-1"
+                >
+                  {inner}
+                </button>
+              ) : (
+                <div key={c.title} className="box">
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Contact */}
-      <section id="contact" className="scroll-mt-20 bg-forest py-20 text-white md:py-28">
-        <div className="container-page text-center">
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">{t.contactSection.title}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">{t.contactSection.body}</p>
-          <a
-            href={`mailto:${contact.email}`}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-forest transition hover:bg-mint"
-          >
-            <EnvelopeIcon className="h-5 w-5" />
-            {contact.email}
-          </a>
-          <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/85">
-            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-              LinkedIn
-            </a>
-            <a href={contact.lemon8} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-              Lemon8
-            </a>
-            <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-              GitHub
-            </a>
+      {/* ===== Case study ===== */}
+      <section id="case-study" className="scroll-mt-16 py-16 md:py-20">
+        <div className="container-page grid items-start gap-10 lg:grid-cols-2">
+          <WinBox title="case_study_01/">
+            <div className="grid grid-cols-3 gap-2.5 p-3">
+              {[design2, design1, design3, design4, design5, design6].map((d, i) => (
+                <a key={i} href={d.src} target="_blank" rel="noopener noreferrer" className="block border-[3px] border-ink">
+                  <Image src={d} alt={`Grow Together ${i + 1}`} placeholder="blur" className="aspect-[4/5] w-full object-cover" sizes="(min-width: 1024px) 180px, 30vw" />
+                </a>
+              ))}
+            </div>
+          </WinBox>
+          <div>
+            <span className="inline-block border-[3px] border-ink bg-pink px-2 py-1.5 font-pixel text-[9px] uppercase sm:text-[10px]">
+              ★ {t.caseStudy.label}
+            </span>
+            <h2 className="px-title mt-4 text-2xl sm:text-3xl">{t.caseStudy.title}</h2>
+            <p className="mt-2 font-pixel text-[10px] uppercase text-green">{t.caseStudy.brand}</p>
+            <div className="box mt-5 p-4">
+              <p className="font-pixel text-[10px] uppercase">
+                <span className="text-green">!</span> {t.caseStudy.quest}
+              </p>
+              <p className="mt-2 text-lg leading-snug">{t.caseStudy.questBody}</p>
+            </div>
+            <div className="box mt-5 p-4">
+              <p className="font-pixel text-[10px] uppercase">
+                <span className="text-green">⚔</span> {t.caseStudy.strategy}
+              </p>
+              <p className="mt-2 text-lg leading-snug">{t.caseStudy.strategyBody}</p>
+            </div>
+            <ol className="mt-5 grid grid-cols-4 gap-2.5">
+              {t.caseStudy.steps.map((s, i) => (
+                <li key={s} className={`border-4 border-ink px-1 py-3 text-center font-pixel text-[8px] uppercase sm:text-[9px] ${stepColors[i]}`}>
+                  {i + 1} {s}
+                </li>
+              ))}
+            </ol>
           </div>
-          <p className="mt-8 inline-flex items-center gap-1.5 text-sm text-white/60">
-            <MapPinIcon className="h-4 w-4" /> {t.contactSection.location}
-          </p>
+        </div>
+      </section>
+
+      {/* ===== Gallery ===== */}
+      <section id="gallery" className="section-band scroll-mt-16 py-16 md:py-20">
+        <div className="container-page">
+          <h2 className="section-title">{t.gallery.title}</h2>
+          <p className="section-sub !mb-8">{t.gallery.sub}</p>
+
+          <div role="tablist" aria-label={t.gallery.title} className="mb-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center">
+            {(Object.keys(t.gallery.tabs) as GalleryTab[]).map(k => (
+              <button
+                key={k}
+                type="button"
+                role="tab"
+                id={`tab-${k}`}
+                aria-selected={tab === k}
+                aria-controls="gallery-panel"
+                onClick={() => setTab(k)}
+                className={`border-4 border-ink px-3 py-2.5 font-pixel text-[9px] uppercase transition-transform sm:text-[10px] ${
+                  tab === k ? "translate-x-1 translate-y-1 bg-ink text-sun" : "bg-paper shadow-px-sm hover:bg-sun"
+                }`}
+              >
+                {t.gallery.tabs[k]}
+              </button>
+            ))}
+          </div>
+
+          <div id="gallery-panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
+            <p className="mx-auto mb-8 max-w-2xl text-center text-muted">{t.gallery.desc[tab]}</p>
+
+            {tab === "videos" && (
+              <>
+                <Carousel label={t.gallery.tabs.videos}>
+                  {videoThumbs.map((v, i) => (
+                    <a key={`thumb-${i}`} href={contact.brandFacebook} target="_blank" rel="noopener noreferrer" className={`${slide} group relative block overflow-hidden`}>
+                      <Image src={v} alt={`${t.gallery.tabs.videos} ${i + 1}`} placeholder="blur" className="aspect-[9/12] h-full w-full object-cover" sizes="(min-width: 1024px) 30vw, 72vw" />
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="border-4 border-ink bg-sun p-3 shadow-px-sm transition-transform group-hover:scale-110">
+                          <PlayIcon className="h-6 w-6" />
+                        </span>
+                      </span>
+                    </a>
+                  ))}
+                  {facebookVideos.map(url => (
+                    <div key={url} className={`${slide} overflow-hidden`}>
+                      <iframe
+                        title={url}
+                        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`}
+                        loading="lazy"
+                        allowFullScreen
+                        allow="encrypted-media; picture-in-picture"
+                        className="aspect-[9/12] w-full bg-white"
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+                <p className="mt-3 text-center">
+                  <a href={contact.brandFacebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-pixel text-[10px] uppercase text-green hover:underline">
+                    {t.gallery.watchOn} <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                  </a>
+                </p>
+              </>
+            )}
+
+            {tab === "designs" && (
+              <Carousel label={t.gallery.tabs.designs}>
+                {designs.map((d, i) => (
+                  <div key={i} className={slide}>
+                    <ZoomImage src={d} alt={`${t.gallery.tabs.designs} ${i + 1}`} hint={t.gallery.open} imgClass="aspect-[4/5] w-full object-cover" />
+                  </div>
+                ))}
+              </Carousel>
+            )}
+
+            {tab === "calendar" && (
+              <WinBox title="content_calendar.xlsx" className="mx-auto max-w-4xl">
+                <ZoomImage src={calendar} alt={t.gallery.tabs.calendar} hint={t.gallery.open} />
+              </WinBox>
+            )}
+
+            {tab === "tracker" && (
+              <WinBox title="performance_tracker.xlsx" className="mx-auto max-w-4xl">
+                <ZoomImage src={tracker} alt={t.gallery.tabs.tracker} hint={t.gallery.open} />
+              </WinBox>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Inventory ===== */}
+      <section id="inventory" className="scroll-mt-16 py-16 md:py-20">
+        <div className="container-page">
+          <h2 className="section-title">{t.inventory.title}</h2>
+          <p className="section-sub">{t.inventory.sub}</p>
+          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            <WinBox title={t.inventory.skills}>
+              <div className="flex flex-wrap gap-2 p-5">
+                {marketingSkills.map(s => (
+                  <span key={s} className="chip">{s}</span>
+                ))}
+              </div>
+            </WinBox>
+            <WinBox title={t.inventory.tools}>
+              <div className="flex flex-wrap gap-2 p-5">
+                {tools.map(s => (
+                  <span key={s} className="chip">{s}</span>
+                ))}
+              </div>
+            </WinBox>
+            <WinBox title={t.inventory.log} className="md:col-span-2 lg:col-span-1">
+              <ul className="p-5">
+                {t.inventory.jobs.map(j => (
+                  <li key={j.period} className="border-b-[3px] border-dotted border-ink/30 py-2 leading-snug">
+                    <span className="block font-pixel text-[8px] uppercase text-green">{j.period}</span>
+                    {j.role}
+                  </li>
+                ))}
+                <li className="pt-2 leading-snug">
+                  <span className="block font-pixel text-[8px] uppercase text-green">{t.inventory.education}</span>
+                  {t.inventory.degree}
+                  <span className="mt-1 block text-muted">{t.inventory.languages}</span>
+                </li>
+              </ul>
+            </WinBox>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Contact ===== */}
+      <section id="contact" className="scroll-mt-16 border-t-4 border-ink bg-ink py-20 text-center text-paper md:py-24">
+        <div className="container-page">
+          <h2 className="px-title text-3xl leading-snug sm:text-5xl">
+            {t.contactSection.line1}
+            <span className="block text-sun">{t.contactSection.line2}</span>
+          </h2>
+          <p className="mt-5 font-pixel text-[10px] uppercase text-green sm:text-xs">{t.contactSection.continue}</p>
+          <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">{t.contactSection.body}</p>
+          <a href={`mailto:${contact.email}`} className="btn-px mt-8 inline-flex items-center gap-2 !normal-case shadow-[6px_6px_0_#3fa66b]">
+            <EnvelopeIcon className="h-4 w-4" /> {contact.email}
+          </a>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 font-pixel text-[10px] uppercase">
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-sun">LinkedIn</a>
+            <a href={contact.lemon8} target="_blank" rel="noopener noreferrer" className="hover:text-sun">Lemon8</a>
+            <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-sun">GitHub</a>
+          </div>
+          <p className="mt-8 text-sm text-paper/60">{t.contactSection.location}</p>
         </div>
       </section>
     </>
