@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import sprite from "@/assets/boat-wai.png";
+import waiSheet from "@/assets/boat-wai.png";
+import swordSheet from "@/assets/boat-sword.png";
 import { useLanguage } from "./LanguageContext";
 
-const FRAMES = 12;
 const HIDE_KEY = "boat-dancer-hidden";
 
-/** Small pixel Boat doing a Thai wai (สวัสดี) in the bottom-right corner. */
+/**
+ * Pixel Boat in the bottom-right corner: loops a Thai wai (สวัสดี);
+ * clicking him plays a big-sword slash once, then shows a speech bubble.
+ * Both sprite sheets use 112x96 frames with the character at the same spot.
+ */
 export default function DancingBoat() {
   const { t } = useLanguage();
   const [hidden, setHidden] = useState(true); // start hidden to avoid a flash before storage is read
   const [bubble, setBubble] = useState(false);
+  const [attacking, setAttacking] = useState(false);
 
   useEffect(() => {
     let wasHidden = false;
@@ -31,12 +36,27 @@ export default function DancingBoat() {
     }
   };
 
+  const onClick = () => {
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setBubble(b => !b);
+      return;
+    }
+    setBubble(false);
+    setAttacking(true);
+  };
+
   if (hidden) return null;
 
+  const vars = {
+    "--wai": `url(${waiSheet.src})`,
+    "--sword": `url(${swordSheet.src})`,
+  } as CSSProperties;
+
   return (
-    <div className="fixed bottom-3 right-3 z-40 flex flex-col items-end sm:bottom-5 sm:right-5">
+    <div className="boat-wrap fixed bottom-2 right-0 z-40 flex flex-col items-end" style={vars}>
       {bubble && (
-        <div className="relative mb-2 border-4 border-ink bg-paper px-3 py-2 shadow-px-sm">
+        <div className="boat-bubble relative mb-1 border-4 border-ink bg-paper px-3 py-2 shadow-px-sm">
           <button
             type="button"
             onClick={hide}
@@ -60,14 +80,23 @@ export default function DancingBoat() {
           />
         </div>
       )}
-      <button
-        type="button"
-        onClick={() => setBubble(b => !b)}
-        aria-label={t.dancer.hi}
-        aria-expanded={bubble}
-        className="boat-dancer pixelated block"
-        style={{ backgroundImage: `url(${sprite.src})`, ["--frames" as string]: FRAMES }}
-      />
+      <div
+        className={`boat-sprite pixelated ${attacking ? "is-attacking" : ""}`}
+        onAnimationEnd={e => {
+          if (e.animationName === "boat-sword") {
+            setAttacking(false);
+            setBubble(true);
+          }
+        }}
+      >
+        <button
+          type="button"
+          onClick={onClick}
+          aria-label={t.dancer.hi}
+          title={t.dancer.tap}
+          className="boat-hit"
+        />
+      </div>
     </div>
   );
 }

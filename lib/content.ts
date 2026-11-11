@@ -82,7 +82,7 @@ type Dict = {
     jobs: { period: string; role: string; company: string; bullets: string[] }[];
   };
   contactSection: { line1: string; line2: string; continue: string; body: string; location: string };
-  dancer: { hi: string; cta: string; hide: string };
+  dancer: { hi: string; cta: string; hide: string; tap: string };
   footer: string;
 };
 
@@ -220,7 +220,7 @@ export const content: Record<Lang, Dict> = {
       body: "Open to Digital Marketing and Content Marketing roles.",
       location: "Based in Chonburi, Thailand",
     },
-    dancer: { hi: "Hi! I'm Boat", cta: "Let's work together ▶", hide: "Hide character" },
+    dancer: { hi: "Hi! I'm Boat", cta: "Let's work together ▶", hide: "Hide character", tap: "Click me!" },
     footer: "Built by Thanate Janyaswasdi",
   },
 
@@ -357,7 +357,7 @@ export const content: Record<Lang, Dict> = {
       body: "เปิดรับตำแหน่ง Digital Marketing และ Content Marketing",
       location: "อยู่ที่ชลบุรี ประเทศไทย",
     },
-    dancer: { hi: "สวัสดีครับ ผมโบ๊ท!", cta: "มาร่วมงานกัน ▶", hide: "ซ่อนตัวละคร" },
+    dancer: { hi: "สวัสดีครับ ผมโบ๊ท!", cta: "มาร่วมงานกัน ▶", hide: "ซ่อนตัวละคร", tap: "กดฉันสิ!" },
     footer: "สร้างโดย Thanate Janyaswasdi",
   },
 };
