@@ -15,7 +15,6 @@ const personJsonLd = {
   sameAs: [
     "https://www.linkedin.com/in/thanate-janyaswasdi",
     "https://github.com/mugenboat",
-    "https://www.tiktok.com/@boattheblur",
     "https://www.lemon8-app.com/@boattheblur",
   ],
 };

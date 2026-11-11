@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
 import {
   ArrowUpRightIcon,
@@ -115,7 +115,6 @@ function ZoomImage({
 
 export default function Home() {
   const { t } = useLanguage();
-  const [showVideos, setShowVideos] = useState(false);
 
   return (
     <>
@@ -309,39 +308,25 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <span className="text-muted">{t.work.video.brandLinks}:</span>
               <ExternalLink href={contact.brandFacebook}>Facebook · chongnomst</ExternalLink>
-              <ExternalLink href={contact.brandTiktok}>TikTok · @realchongnom</ExternalLink>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setShowVideos(v => !v)}
-              className="btn-secondary mt-6"
-              aria-expanded={showVideos}
-            >
-              {showVideos ? t.work.video.hide : t.work.video.more}
-            </button>
-
-            {showVideos && (
-              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {facebookVideos.map(url => (
-                  <div key={url} className="overflow-hidden rounded-xl border border-line bg-paper">
-                    <iframe
-                      title={url}
-                      src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`}
-                      loading="lazy"
-                      allowFullScreen
-                      allow="encrypted-media; picture-in-picture"
-                      className="aspect-[9/12] w-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {facebookVideos.map(url => (
+                <div key={url} className="overflow-hidden rounded-xl border border-line bg-paper">
+                  <iframe
+                    title={url}
+                    src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`}
+                    loading="lazy"
+                    allowFullScreen
+                    allow="encrypted-media; picture-in-picture"
+                    className="aspect-[9/12] w-full"
+                  />
+                </div>
+              ))}
+            </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <span className="text-muted">{t.work.video.personal}:</span>
-              <ExternalLink href={contact.tiktok}>TikTok · @boattheblur</ExternalLink>
-              <ExternalLink href={contact.tiktokGaming}>TikTok · @blurman_gamer</ExternalLink>
               <ExternalLink href={contact.lemon8}>Lemon8 · @boattheblur</ExternalLink>
             </div>
           </div>
@@ -398,9 +383,6 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/85">
             <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
               LinkedIn
-            </a>
-            <a href={contact.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-              TikTok
             </a>
             <a href={contact.lemon8} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
               Lemon8

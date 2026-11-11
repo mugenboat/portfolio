@@ -5,10 +5,7 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/thanate-janyaswasdi",
   github: "https://github.com/mugenboat",
   lemon8: "https://www.lemon8-app.com/@boattheblur",
-  tiktok: "https://www.tiktok.com/@boattheblur",
-  tiktokGaming: "https://www.tiktok.com/@blurman_gamer",
   brandFacebook: "https://www.facebook.com/chongnomst",
-  brandTiktok: "https://www.tiktok.com/@realchongnom",
 };
 
 export const marketingSkills = [
@@ -71,8 +68,6 @@ type Dict = {
       title: string;
       body: string;
       brandLinks: string;
-      more: string;
-      hide: string;
       personal: string;
     };
     open: string;
@@ -193,8 +188,6 @@ export const content: Record<Lang, Dict> = {
         title: "Content video",
         body: "Promotional ads, social reels and creative campaign content — planned, shot and edited by me.",
         brandLinks: "Watch on the brand's channels",
-        more: "Show more videos",
-        hide: "Hide videos",
         personal: "My personal channels",
       },
       open: "Click to view full size",
@@ -319,8 +312,6 @@ export const content: Record<Lang, Dict> = {
         title: "วิดีโอคอนเทนต์",
         body: "โฆษณา รีลโซเชียล และคอนเทนต์แคมเปญ ที่ผมวางแผน ถ่าย และตัดต่อเอง",
         brandLinks: "ดูได้ที่ช่องของแบรนด์",
-        more: "ดูวิดีโอเพิ่มเติม",
-        hide: "ซ่อนวิดีโอ",
         personal: "ช่องส่วนตัวของผม",
       },
       open: "คลิกเพื่อดูภาพเต็ม",
