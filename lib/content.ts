@@ -64,7 +64,6 @@ type Dict = {
     tabs: Record<GalleryTab, string>;
     desc: Record<GalleryTab, string>;
     open: string;
-    play: string;
     watchOn: string;
   };
   inventory: {
@@ -145,7 +144,6 @@ export const content: Record<Lang, Dict> = {
         tracker: "Monthly tracking across Facebook, Instagram and TikTok: topics, objectives, ad budget and results.",
       },
       open: "Click to view full size",
-      play: "Play video",
       watchOn: "More on the brand's page",
     },
     inventory: {
@@ -283,7 +281,6 @@ export const content: Record<Lang, Dict> = {
         tracker: "ติดตามผลรายเดือนบน Facebook, Instagram และ TikTok ทั้งหัวข้อ วัตถุประสงค์ งบโฆษณา และผลลัพธ์",
       },
       open: "คลิกเพื่อดูภาพเต็ม",
-      play: "เล่นวิดีโอ",
       watchOn: "ดูเพิ่มเติมที่เพจของแบรนด์",
     },
     inventory: {

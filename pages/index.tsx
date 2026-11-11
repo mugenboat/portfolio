@@ -5,10 +5,10 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EnvelopeIcon,
-  PlayIcon,
 } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
 import QuestLog from "@/components/QuestLog";
+import FacebookVideo from "@/components/FacebookVideo";
 import { contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
@@ -76,7 +76,7 @@ function Carousel({ children, label }: { children: ReactNode; label: string }) {
         ref={ref}
         role="region"
         aria-label={label}
-        className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-5 pt-1 sm:-mx-8 sm:px-8"
+        className="-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-5 overflow-x-auto px-5 pb-5 pt-1 sm:-mx-8 sm:scroll-px-8 sm:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {children}
       </div>
@@ -97,7 +97,6 @@ const slide = "w-[72%] shrink-0 snap-start border-4 border-ink bg-paper shadow-p
 export default function Home() {
   const { t } = useLanguage();
   const [tab, setTab] = useState<GalleryTab>("videos");
-  const [playing, setPlaying] = useState<number | null>(null);
 
   const openGallery = (next: GalleryTab) => {
     setTab(next);
@@ -321,30 +320,8 @@ export default function Home() {
               <>
                 <Carousel label={t.gallery.tabs.videos}>
                   {facebookVideos.map((url, i) => (
-                    <div key={url} className={`${slide} relative overflow-hidden`}>
-                      {playing === i ? (
-                        <iframe
-                          title={`${t.gallery.tabs.videos} ${i + 1}`}
-                          src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=360&autoplay=true`}
-                          allowFullScreen
-                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                          className="aspect-[9/12] w-full bg-ink"
-                        />
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => setPlaying(i)}
-                          aria-label={`${t.gallery.play} ${i + 1}`}
-                          className="group flex aspect-[9/12] w-full flex-col items-center justify-center gap-5 bg-ink text-paper [background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.04)_0_2px,transparent_2px_4px)]"
-                        >
-                          <span className="border-4 border-paper bg-sun p-4 text-ink shadow-[4px_4px_0_#3fa66b] transition-transform group-hover:scale-110 group-active:translate-x-1 group-active:translate-y-1">
-                            <PlayIcon className="h-8 w-8" />
-                          </span>
-                          <span className="font-pixel text-[10px] uppercase">
-                            {t.gallery.play} {String(i + 1).padStart(2, "0")}
-                          </span>
-                        </button>
-                      )}
+                    <div key={url} className={`${slide} overflow-hidden`}>
+                      <FacebookVideo url={url} title={`${t.gallery.tabs.videos} ${i + 1}`} />
                     </div>
                   ))}
                 </Carousel>
