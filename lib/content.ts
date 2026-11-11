@@ -30,14 +30,12 @@ export const tools = [
   "Notion",
 ];
 
-export const brands = ["ศิริชัย 25", "Geeers", "Sansiri", "One Asset", "Mez"];
-
 export type GalleryTab = "videos" | "designs" | "calendar" | "tracker";
 
 type Card = { title: string; body: string };
 
 type Dict = {
-  nav: { work: string; caseStudy: string; gallery: string; inventory: string; contact: string };
+  nav: { work: string; experience: string; caseStudy: string; gallery: string; inventory: string; contact: string };
   hero: {
     tag: string;
     line1: string;
@@ -48,7 +46,7 @@ type Dict = {
     location: string;
     folders: { campaigns: string; calendar: string; videos: string; designs: string };
   };
-  intro: { title: string; p1: string; p2: string; brands: string };
+  intro: { title: string; p1: string; p2: string };
   work: { title: string; sub: string; cards: Card[] };
   caseStudy: {
     label: string;
@@ -73,11 +71,15 @@ type Dict = {
     sub: string;
     skills: string;
     tools: string;
-    log: string;
-    jobs: { period: string; role: string }[];
+    eduFile: string;
     education: string;
     degree: string;
     languages: string;
+  };
+  experience: {
+    title: string;
+    sub: string;
+    jobs: { period: string; role: string; company: string; bullets: string[] }[];
   };
   contactSection: { line1: string; line2: string; continue: string; body: string; location: string };
   footer: string;
@@ -87,6 +89,7 @@ export const content: Record<Lang, Dict> = {
   en: {
     nav: {
       work: "My work",
+      experience: "Experience",
       caseStudy: "Case study",
       gallery: "Gallery",
       inventory: "Toolkit",
@@ -106,7 +109,6 @@ export const content: Record<Lang, Dict> = {
       title: "Hi, I'm Boat!",
       p1: "Content marketer who plans, creates and runs content for a Thai consumer brand — from the monthly calendar and copy, to shooting short videos and running Facebook & TikTok Ads.",
       p2: "Former frontend developer (4 years), so I'm comfortable with websites, data and tools — and I make decisions from numbers.",
-      brands: "Brands I've worked with",
     },
     work: {
       title: "My work includes",
@@ -148,16 +150,67 @@ export const content: Record<Lang, Dict> = {
       sub: "Skills, tools & experience unlocked",
       skills: "skills.txt",
       tools: "tools.txt",
-      log: "save_file.log",
-      jobs: [
-        { period: "2026 – Now", role: "Content & Digital Marketing · Mah Boonkhrong Sirichai 25 Marketing" },
-        { period: "2025", role: "Production Planner · Siam Carton Packaging" },
-        { period: "2024 – 2025", role: "Digital Marketing Project (Self-employed)" },
-        { period: "2019 – 2023", role: "Frontend Developer · Geekstart" },
-      ],
+      eduFile: "education.txt",
       education: "Education",
       degree: "BS Business / Technology · Thai-Nichi Institute of Technology",
       languages: "Languages: Thai, English",
+    },
+    experience: {
+      title: "Quest log",
+      sub: "Work experience — every level cleared so far",
+      jobs: [
+        {
+          period: "2026 – Present",
+          role: "Content & Digital Marketing",
+          company: "Mah Boonkhrong Sirichai 25 Marketing Co., Ltd.",
+          bullets: [
+            "Plan monthly content calendars and create content for Facebook, TikTok, Instagram, Instagram Reels and other social media platforms. Manage Facebook Ads and TikTok Ads campaigns to increase reach, engagement and website traffic.",
+            "Manage influencer collaborations from outreach and briefing to negotiation, product seeding, content review, follow-up and post tracking.",
+            "Analyze campaign performance and optimize content based on data insights.",
+            "Plan, shoot and edit short-form video content using mobile devices, CapCut and Canva.",
+            "Develop content ideas, hooks and scripts for short-form social media videos.",
+            "Research social media trends, formats and trending content to develop relevant short-form videos.",
+          ],
+        },
+        {
+          period: "2025",
+          role: "Production Planner",
+          company: "Siam Carton Packaging Co., Ltd.",
+          bullets: [
+            "Planned and scheduled production to ensure on-time delivery.",
+            "Maintained and updated production data and reports.",
+            "Coordinated with sales and production teams to resolve issues and improve workflow.",
+            "Monitored inventory and raw material availability.",
+            "Created a planning system guide manual to improve operational workflow.",
+            "Ensured material accuracy by validating substitute materials in orders.",
+            "Organized and prioritized production schedules based on urgency and deadlines.",
+            "Collaborated with sales to align manufacturing timelines and batch details.",
+          ],
+        },
+        {
+          period: "2024 – 2025",
+          role: "Digital Marketing Project (Self-employed)",
+          company: "Affiliate marketing",
+          bullets: [
+            "Built and managed Facebook pages for affiliate marketing.",
+            "Created content strategy and social media content.",
+            "Learned and practiced Meta Ads and TikTok Ads.",
+            "Analyzed content performance using platform analytics.",
+          ],
+        },
+        {
+          period: "2019 – 2023",
+          role: "Frontend Developer",
+          company: "Geekstart Co., Ltd.",
+          bullets: [
+            "Developed and maintained responsive, user-friendly web applications using HTML, CSS and JavaScript.",
+            "Designed and implemented clean, scalable front-end architecture.",
+            "Ensured cross-browser compatibility and optimized performance across desktop, tablet and mobile devices.",
+            "Collaborated with UI/UX designers to improve user experience.",
+            "Followed accessibility standards and front-end best practices to improve usability and maintainability.",
+          ],
+        },
+      ],
     },
     contactSection: {
       line1: "Ready for",
@@ -172,6 +225,7 @@ export const content: Record<Lang, Dict> = {
   th: {
     nav: {
       work: "ผลงาน",
+      experience: "ประสบการณ์",
       caseStudy: "เคสตัวอย่าง",
       gallery: "แกลเลอรี",
       inventory: "ทักษะ",
@@ -191,7 +245,6 @@ export const content: Record<Lang, Dict> = {
       title: "สวัสดีครับ ผมโบ๊ท!",
       p1: "นักการตลาดคอนเทนต์ ที่วางแผน ผลิต และดูแลคอนเทนต์ให้แบรนด์สินค้าอุปโภคบริโภคของไทย ตั้งแต่ทำ content calendar เขียนแคปชัน ถ่ายและตัดต่อวิดีโอสั้น ไปจนถึงยิงโฆษณา Facebook และ TikTok",
       p2: "ก่อนหน้านี้เป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ และตัดสินใจจากตัวเลขจริง",
-      brands: "แบรนด์ที่เคยร่วมงาน",
     },
     work: {
       title: "My work includes",
@@ -233,16 +286,67 @@ export const content: Record<Lang, Dict> = {
       sub: "ทักษะ เครื่องมือ และประสบการณ์ที่ปลดล็อกแล้ว",
       skills: "skills.txt",
       tools: "tools.txt",
-      log: "save_file.log",
-      jobs: [
-        { period: "2026 – ปัจจุบัน", role: "Content & Digital Marketing · Mah Boonkhrong Sirichai 25 Marketing" },
-        { period: "2025", role: "Production Planner · Siam Carton Packaging" },
-        { period: "2024 – 2025", role: "Digital Marketing Project (ทำเอง)" },
-        { period: "2019 – 2023", role: "Frontend Developer · Geekstart" },
-      ],
+      eduFile: "education.txt",
       education: "การศึกษา",
       degree: "วิทยาศาสตรบัณฑิต Business / Technology · สถาบันเทคโนโลยีไทย-ญี่ปุ่น",
       languages: "ภาษา: ไทย, อังกฤษ",
+    },
+    experience: {
+      title: "Quest log",
+      sub: "ประสบการณ์ทำงาน ทุกด่านที่ผ่านมา",
+      jobs: [
+        {
+          period: "2026 – ปัจจุบัน",
+          role: "Content & Digital Marketing",
+          company: "Mah Boonkhrong Sirichai 25 Marketing Co., Ltd.",
+          bullets: [
+            "วางแผน content calendar รายเดือน และผลิตคอนเทนต์สำหรับ Facebook, TikTok, Instagram, Instagram Reels และแพลตฟอร์มโซเชียลอื่น ๆ พร้อมดูแลแคมเปญ Facebook Ads และ TikTok Ads เพื่อเพิ่ม reach, engagement และทราฟฟิกเข้าเว็บไซต์",
+            "ดูแลงานอินฟลูเอนเซอร์ ตั้งแต่ติดต่อ บรีฟ ต่อรอง ส่งสินค้า ตรวจคอนเทนต์ ติดตามงาน จนถึงติดตามโพสต์",
+            "วิเคราะห์ผลแคมเปญ และปรับคอนเทนต์จาก insight ของข้อมูล",
+            "วางแผน ถ่าย และตัดต่อวิดีโอสั้นด้วยมือถือ CapCut และ Canva",
+            "คิดไอเดียคอนเทนต์ hook และสคริปต์สำหรับวิดีโอสั้นบนโซเชียล",
+            "ศึกษาเทรนด์ รูปแบบ และคอนเทนต์ที่กำลังมาแรง เพื่อนำมาทำวิดีโอสั้นที่ตรงกระแส",
+          ],
+        },
+        {
+          period: "2025",
+          role: "Production Planner",
+          company: "Siam Carton Packaging Co., Ltd.",
+          bullets: [
+            "วางแผนและจัดตารางการผลิตเพื่อให้ส่งงานได้ตรงเวลา",
+            "ดูแลและอัปเดตข้อมูลการผลิตและรายงาน",
+            "ประสานงานกับทีมขายและทีมผลิตเพื่อแก้ปัญหาและปรับปรุงขั้นตอนการทำงาน",
+            "ติดตามสต็อกและความพร้อมของวัตถุดิบ",
+            "จัดทำคู่มือการใช้ระบบวางแผน เพื่อให้การทำงานราบรื่นขึ้น",
+            "ตรวจสอบวัตถุดิบทดแทนในออเดอร์ให้ถูกต้อง",
+            "จัดลำดับตารางการผลิตตามความเร่งด่วนและกำหนดส่ง",
+            "ทำงานร่วมกับทีมขายเพื่อวางไทม์ไลน์การผลิตและรายละเอียดแต่ละล็อต",
+          ],
+        },
+        {
+          period: "2024 – 2025",
+          role: "Digital Marketing Project (ทำเอง)",
+          company: "Affiliate marketing",
+          bullets: [
+            "สร้างและดูแลเพจ Facebook สำหรับทำ affiliate marketing",
+            "วางกลยุทธ์คอนเทนต์และผลิตคอนเทนต์โซเชียลมีเดีย",
+            "ศึกษาและฝึกยิงโฆษณา Meta Ads และ TikTok Ads",
+            "วิเคราะห์ผลคอนเทนต์ด้วย analytics ของแพลตฟอร์ม",
+          ],
+        },
+        {
+          period: "2019 – 2023",
+          role: "Frontend Developer",
+          company: "Geekstart Co., Ltd.",
+          bullets: [
+            "พัฒนาและดูแลเว็บแอปพลิเคชันแบบ responsive ที่ใช้งานง่าย ด้วย HTML, CSS และ JavaScript",
+            "ออกแบบและวางโครงสร้าง front-end ให้เป็นระเบียบและขยายต่อได้",
+            "ทำให้เว็บใช้งานได้ทุกเบราว์เซอร์ และทำงานเร็วทั้งบนคอม แท็บเล็ต และมือถือ",
+            "ทำงานร่วมกับ UI/UX designer เพื่อปรับประสบการณ์ผู้ใช้",
+            "ทำตามมาตรฐาน accessibility และแนวปฏิบัติที่ดีของ front-end เพื่อให้ใช้งานง่ายและดูแลต่อได้",
+          ],
+        },
+      ],
     },
     contactSection: {
       line1: "Ready for",

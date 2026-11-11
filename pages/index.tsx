@@ -8,7 +8,7 @@ import {
   PlayIcon,
 } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
-import { brands, contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
+import { contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
 import profilePixel from "@/assets/profile-pixel.png";
@@ -201,15 +201,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-4 border-ink bg-ink px-5 py-3 text-paper shadow-[6px_6px_0_#3fa66b]">
-            <span className="font-pixel text-[9px] uppercase text-sun sm:text-[10px]">{t.intro.brands} ▶</span>
-            {brands.map(b => (
-              <span key={b} className="font-pixel text-[10px] uppercase leading-none">
-                {b}
-              </span>
-            ))}
-          </div>
-
           <h2 className="section-title mt-20">{t.work.title}</h2>
           <p className="section-sub">
             <span className="bg-sun px-1.5 text-ink">{t.work.sub}</span> ↓
@@ -246,8 +237,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== Experience ===== */}
+      <section id="experience" className="scroll-mt-16 py-16 md:py-20">
+        <div className="container-page">
+          <h2 className="section-title">{t.experience.title}</h2>
+          <p className="section-sub">{t.experience.sub}</p>
+          <ol className="grid items-start gap-8 lg:grid-cols-2">
+            {t.experience.jobs.map((job, i) => (
+              <li key={job.period + job.role} className="box">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b-4 border-ink bg-forest px-4 py-2 text-white">
+                  <span className="font-pixel text-[9px] uppercase sm:text-[10px]">
+                    <span className="text-sun">LV.{String(t.experience.jobs.length - i).padStart(2, "0")}</span> · {job.period}
+                  </span>
+                  {i === 0 && (
+                    <span className="border-2 border-ink bg-sun px-1.5 py-0.5 font-pixel text-[8px] uppercase text-ink">
+                      ▶ Now playing
+                    </span>
+                  )}
+                </div>
+                <div className="p-5 sm:p-6">
+                  <h3 className="px-title text-base sm:text-lg">{job.role}</h3>
+                  <p className="mt-1.5 text-muted">{job.company}</p>
+                  <ul className="mt-4 space-y-2 leading-snug">
+                    {job.bullets.map(b => (
+                      <li key={b} className="flex gap-3">
+                        <span aria-hidden className="mt-2 h-2 w-2 shrink-0 bg-green" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* ===== Case study ===== */}
-      <section id="case-study" className="scroll-mt-16 py-16 md:py-20">
+      <section id="case-study" className="section-band scroll-mt-16 py-16 md:py-20">
         <div className="container-page grid items-start gap-10 lg:grid-cols-2">
           <WinBox title="case_study_01/">
             <div className="grid grid-cols-3 gap-2.5 p-3">
@@ -288,7 +315,7 @@ export default function Home() {
       </section>
 
       {/* ===== Gallery ===== */}
-      <section id="gallery" className="section-band scroll-mt-16 py-16 md:py-20">
+      <section id="gallery" className="scroll-mt-16 py-16 md:py-20">
         <div className="container-page">
           <h2 className="section-title">{t.gallery.title}</h2>
           <p className="section-sub !mb-8">{t.gallery.sub}</p>
@@ -375,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* ===== Inventory ===== */}
-      <section id="inventory" className="scroll-mt-16 py-16 md:py-20">
+      <section id="inventory" className="section-band scroll-mt-16 py-16 md:py-20">
         <div className="container-page">
           <h2 className="section-title">{t.inventory.title}</h2>
           <p className="section-sub">{t.inventory.sub}</p>
@@ -394,20 +421,12 @@ export default function Home() {
                 ))}
               </div>
             </WinBox>
-            <WinBox title={t.inventory.log} className="md:col-span-2 lg:col-span-1">
-              <ul className="p-5">
-                {t.inventory.jobs.map(j => (
-                  <li key={j.period} className="border-b-[3px] border-dotted border-ink/30 py-2 leading-snug">
-                    <span className="block font-pixel text-[8px] uppercase text-green">{j.period}</span>
-                    {j.role}
-                  </li>
-                ))}
-                <li className="pt-2 leading-snug">
-                  <span className="block font-pixel text-[8px] uppercase text-green">{t.inventory.education}</span>
-                  {t.inventory.degree}
-                  <span className="mt-1 block text-muted">{t.inventory.languages}</span>
-                </li>
-              </ul>
+            <WinBox title={t.inventory.eduFile} className="md:col-span-2 lg:col-span-1">
+              <div className="p-5 leading-snug">
+                <span className="block font-pixel text-[8px] uppercase text-green">{t.inventory.education}</span>
+                <p className="mt-1">{t.inventory.degree}</p>
+                <p className="mt-4 text-muted">{t.inventory.languages}</p>
+              </div>
             </WinBox>
           </div>
         </div>
