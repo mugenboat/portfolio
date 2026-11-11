@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "./LanguageContext";
+import DancingBoat from "./DancingBoat";
 import { Lang } from "@/lib/content";
 
 function LangToggle() {
@@ -111,6 +112,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       </div>
 
       <main id="top">{children}</main>
+
+      <DancingBoat />
 
       <footer className="border-t-4 border-forest bg-ink py-6 text-paper/70">
         <div className="container-page flex flex-col items-center justify-between gap-2 font-pixel text-[9px] uppercase sm:flex-row">
