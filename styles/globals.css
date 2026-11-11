@@ -85,63 +85,32 @@
   }
 }
 
-/* Pixel Boat (sprite sheets: 112x96 frames, character drawn at x24..88 / y32..96)
-   - wai loop: 12 frames, sword slash on click: 10 frames */
-.boat-wrap {
-  --s: 1.5;
-  pointer-events: none;
-}
-@media (min-width: 640px) {
-  .boat-wrap {
-    --s: 2;
-  }
-}
-.boat-bubble {
-  pointer-events: auto;
-  margin-right: calc(20px * var(--s));
-}
-.boat-sprite {
-  position: relative;
-  width: calc(112px * var(--s));
-  height: calc(96px * var(--s));
-  background-image: var(--wai);
+/* Pixel Boat greeting with a wai (sprite sheet: 12 frames of 64x64) */
+.boat-dancer {
+  --size: 96px;
+  width: var(--size);
+  height: var(--size);
   background-repeat: no-repeat;
-  background-size: auto 100%;
-  animation: boat-wai 2.4s steps(12) infinite;
+  background-size: calc(var(--size) * var(--frames)) var(--size);
+  animation: boat-dance 2.4s steps(12) infinite;
   filter: drop-shadow(3px 3px 0 rgba(27, 27, 47, 0.25));
-}
-.boat-sprite.is-attacking {
-  background-image: var(--sword);
-  animation: boat-sword 1.15s steps(10) 1 forwards;
-}
-.boat-hit {
-  position: absolute;
-  left: calc(24px * var(--s));
-  top: calc(30px * var(--s));
-  width: calc(64px * var(--s));
-  height: calc(66px * var(--s));
-  pointer-events: auto;
   cursor: pointer;
 }
-@keyframes boat-wai {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: calc(112px * var(--s) * -12) 0;
+@media (min-width: 640px) {
+  .boat-dancer {
+    --size: 128px;
   }
 }
-@keyframes boat-sword {
+@keyframes boat-dance {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: calc(112px * var(--s) * -10) 0;
+    background-position: calc(var(--size) * var(--frames) * -1) 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .boat-sprite,
-  .boat-sprite.is-attacking {
+  .boat-dancer {
     animation: none;
   }
 }
