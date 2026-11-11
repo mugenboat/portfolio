@@ -8,6 +8,7 @@ import {
   PlayIcon,
 } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
+import QuestLog from "@/components/QuestLog";
 import { contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
@@ -242,34 +243,7 @@ export default function Home() {
         <div className="container-page">
           <h2 className="section-title">{t.experience.title}</h2>
           <p className="section-sub">{t.experience.sub}</p>
-          <ol className="grid items-start gap-8 lg:grid-cols-2">
-            {t.experience.jobs.map((job, i) => (
-              <li key={job.period + job.role} className="box">
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b-4 border-ink bg-forest px-4 py-2 text-white">
-                  <span className="font-pixel text-[9px] uppercase sm:text-[10px]">
-                    <span className="text-sun">LV.{String(t.experience.jobs.length - i).padStart(2, "0")}</span> · {job.period}
-                  </span>
-                  {i === 0 && (
-                    <span className="border-2 border-ink bg-sun px-1.5 py-0.5 font-pixel text-[8px] uppercase text-ink">
-                      ▶ Now playing
-                    </span>
-                  )}
-                </div>
-                <div className="p-5 sm:p-6">
-                  <h3 className="px-title text-base sm:text-lg">{job.role}</h3>
-                  <p className="mt-1.5 text-muted">{job.company}</p>
-                  <ul className="mt-4 space-y-2 leading-snug">
-                    {job.bullets.map(b => (
-                      <li key={b} className="flex gap-3">
-                        <span aria-hidden className="mt-2 h-2 w-2 shrink-0 bg-green" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <QuestLog />
         </div>
       </section>
 
