@@ -46,17 +46,17 @@ type Job = {
 };
 
 type Dict = {
-  nav: { about: string; experience: string; work: string; skills: string; contact: string };
+  nav: { experience: string; work: string; skills: string; contact: string };
   hero: {
     eyebrow: string;
     nickname: string;
     summary: string;
+    background: string;
     location: string;
     ctaWork: string;
     ctaContact: string;
     focus: string[];
   };
-  about: { title: string; body: string[]; traits: string[] };
   experience: { title: string; jobs: Job[]; devProjectsLabel: string };
   work: {
     title: string;
@@ -89,7 +89,6 @@ type Dict = {
 export const content: Record<Lang, Dict> = {
   en: {
     nav: {
-      about: "About",
       experience: "Experience",
       work: "Work",
       skills: "Skills",
@@ -100,6 +99,8 @@ export const content: Record<Lang, Dict> = {
       nickname: "Boat",
       summary:
         "Content marketer with hands-on experience in content planning, influencer coordination and paid media on Facebook and TikTok. I build content strategies, run social campaigns and use performance data to grow engagement and reach.",
+      background:
+        "Before marketing I spent four years as a frontend developer — so I'm comfortable with websites, data and tools, and I make decisions from numbers.",
       location: "Chonburi, Thailand",
       ctaWork: "See my work",
       ctaContact: "Contact me",
@@ -108,18 +109,6 @@ export const content: Record<Lang, Dict> = {
         "Meta & TikTok Ads",
         "Influencer collaborations",
         "Short-form video",
-      ],
-    },
-    about: {
-      title: "About me",
-      body: [
-        "I plan and create content for a Thai consumer brand every month — from the content calendar and copy, to shooting and editing short videos, to running the ads that put them in front of the right people.",
-        "Before marketing I spent four years as a frontend developer, so I'm comfortable with websites, data and tools. That background helps me work closely with tech teams and make decisions from numbers, not guesses.",
-      ],
-      traits: [
-        "Passionate about content creation and digital marketing",
-        "Strong communication and teamwork",
-        "Results-driven, always learning",
       ],
     },
     experience: {
@@ -213,7 +202,6 @@ export const content: Record<Lang, Dict> = {
 
   th: {
     nav: {
-      about: "เกี่ยวกับ",
       experience: "ประสบการณ์",
       work: "ผลงาน",
       skills: "ทักษะ",
@@ -224,6 +212,8 @@ export const content: Record<Lang, Dict> = {
       nickname: "โบ๊ท",
       summary:
         "นักการตลาดคอนเทนต์ ที่มีประสบการณ์วางแผนคอนเทนต์ ประสานงานอินฟลูเอนเซอร์ และยิงโฆษณาบน Facebook และ TikTok ถนัดวางกลยุทธ์คอนเทนต์ ดูแลแคมเปญโซเชียลมีเดีย และใช้ข้อมูลผลลัพธ์มาปรับให้ได้ยอด engagement และ reach ที่ดีขึ้น",
+      background:
+        "ก่อนมาทำการตลาด ผมเป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ และตัดสินใจจากตัวเลขจริง",
       location: "ชลบุรี ประเทศไทย",
       ctaWork: "ดูผลงาน",
       ctaContact: "ติดต่อผม",
@@ -232,18 +222,6 @@ export const content: Record<Lang, Dict> = {
         "โฆษณา Meta และ TikTok",
         "งานอินฟลูเอนเซอร์",
         "วิดีโอสั้น",
-      ],
-    },
-    about: {
-      title: "เกี่ยวกับผม",
-      body: [
-        "ผมวางแผนและผลิตคอนเทนต์ให้แบรนด์สินค้าอุปโภคบริโภคของไทยทุกเดือน ตั้งแต่ทำ content calendar เขียนแคปชัน ถ่ายและตัดต่อวิดีโอสั้น ไปจนถึงยิงโฆษณาให้คอนเทนต์ไปถึงกลุ่มเป้าหมาย",
-        "ก่อนมาทำการตลาด ผมเป็น Frontend Developer มา 4 ปี จึงคุ้นเคยกับเว็บไซต์ ข้อมูล และเครื่องมือต่าง ๆ ช่วยให้ทำงานร่วมกับทีมเทคนิคได้ง่าย และตัดสินใจจากตัวเลขจริง",
-      ],
-      traits: [
-        "หลงใหลในการสร้างคอนเทนต์และดิจิทัลมาร์เก็ตติ้ง",
-        "สื่อสารดีและทำงานเป็นทีมได้",
-        "มุ่งเน้นผลลัพธ์และเรียนรู้อยู่เสมอ",
       ],
     },
     experience: {

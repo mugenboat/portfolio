@@ -45,7 +45,6 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   const links = [
-    { href: "#about", label: t.nav.about },
     { href: "#experience", label: t.nav.experience },
     { href: "#work", label: t.nav.work },
     { href: "#skills", label: t.nav.skills },

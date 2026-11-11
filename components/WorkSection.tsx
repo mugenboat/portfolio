@@ -131,7 +131,7 @@ export default function WorkSection() {
   const active = t.work[tab];
 
   return (
-    <section id="work" className="scroll-mt-20 bg-white py-16 md:py-24">
+    <section id="work" className="scroll-mt-20 bg-white py-14 md:py-20">
       <div className="container-page">
         <h2 className="section-title">{t.work.title}</h2>
         <p className="-mt-6 mb-8 max-w-2xl text-lg text-muted">{t.work.intro}</p>

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
-import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
 import WorkSection from "@/components/WorkSection";
 import { contact, devProjects, marketingSkills, tools } from "@/lib/content";
@@ -25,7 +25,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`scroll-mt-20 py-16 md:py-24 ${className}`}>
+    <section id={id} className={`scroll-mt-20 py-14 md:py-20 ${className}`}>
       <div className="container-page">
         <h2 className="section-title">{title}</h2>
         {children}
@@ -59,6 +59,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.hero.summary}</p>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted">{t.hero.background}</p>
             <p className="mt-4 inline-flex items-center gap-1.5 text-sm text-muted">
               <MapPinIcon className="h-4 w-4" /> {t.hero.location}
             </p>
@@ -96,70 +97,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About */}
-      <Section id="about" title={t.about.title} className="bg-white">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr]">
-          <div className="space-y-4 text-lg leading-relaxed text-muted">
-            {t.about.body.map(p => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-          <ul className="space-y-3">
-            {t.about.traits.map(tr => (
-              <li key={tr} className="flex gap-3 rounded-xl bg-mint/60 px-4 py-3 text-ink">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
-                {tr}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
       {/* Experience */}
       <Section id="experience" title={t.experience.title}>
-        <ol className="relative space-y-10 border-l border-line pl-6 md:pl-10">
-          {t.experience.jobs.map(job => (
-            <li key={job.role + job.period} className="relative">
-              <span
-                className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 md:-left-[47px] ${
-                  job.dev ? "border-muted bg-paper" : "border-accent bg-accent"
-                }`}
-                aria-hidden
-              />
-              <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-                {job.period}
-              </p>
-              <h3 className="mt-1 font-display text-xl font-bold">{job.role}</h3>
-              <p className="text-muted">{job.company}</p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink/85 marker:text-line">
-                {job.bullets.map(b => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-              {job.dev && (
-                <div className="mt-4">
-                  <p className="mb-2 text-sm text-muted">{t.experience.devProjectsLabel}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {devProjects.map(p => (
-                      <span
-                        key={p.name}
-                        className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3 text-sm"
-                      >
-                        <Image
-                          src={logos[p.logo]}
-                          alt=""
-                          width={22}
-                          height={22}
-                          className="rounded-full"
-                        />
-                        {p.name}
-                      </span>
-                    ))}
+        <ol className="relative space-y-6 border-l border-line pl-6 md:pl-10">
+          {t.experience.jobs.map((job, i) => {
+            const details = (
+              <>
+                <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink/85 marker:text-line">
+                  {job.bullets.map(b => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+                {job.dev && (
+                  <div className="mt-4">
+                    <p className="mb-2 text-sm text-muted">{t.experience.devProjectsLabel}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {devProjects.map(p => (
+                        <span
+                          key={p.name}
+                          className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3 text-sm"
+                        >
+                          <Image
+                            src={logos[p.logo]}
+                            alt=""
+                            width={22}
+                            height={22}
+                            className="rounded-full"
+                          />
+                          {p.name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </li>
-          ))}
+                )}
+              </>
+            );
+            const heading = (
+              <>
+                <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+                  {job.period}
+                </p>
+                <h3 className="mt-1 font-display text-xl font-bold">{job.role}</h3>
+                <p className="text-muted">{job.company}</p>
+              </>
+            );
+            return (
+              <li key={job.role + job.period} className="relative">
+                <span
+                  className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 md:-left-[47px] ${
+                    job.dev ? "border-muted bg-paper" : "border-accent bg-accent"
+                  }`}
+                  aria-hidden
+                />
+                {i === 0 ? (
+                  <>
+                    {heading}
+                    {details}
+                  </>
+                ) : (
+                  <details className="group">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                      <div>{heading}</div>
+                      <ChevronDownIcon
+                        className="mt-6 h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180"
+                        aria-hidden
+                      />
+                    </summary>
+                    {details}
+                  </details>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </Section>
 
