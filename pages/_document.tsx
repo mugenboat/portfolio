@@ -23,7 +23,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/portfolio/favicon.ico" />
+        <link rel="icon" href="/portfolio/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/portfolio/icon-32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/portfolio/icon-192.png" />
+        <link rel="apple-touch-icon" href="/portfolio/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
