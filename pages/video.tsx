@@ -1,12 +1,17 @@
-import React from "react";
-import Clips from "@/components/Clips";
+import { useEffect } from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
-const clips = () => {
+// Old page kept so existing links still work — sends visitors to the new section.
+export default function Redirect() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/#videos");
+  }, [router]);
   return (
-    <div>
-      <Clips />
-    </div>
+    <Head>
+      <meta name="robots" content="noindex" />
+      <meta httpEquiv="refresh" content="0; url=/portfolio/#videos" />
+    </Head>
   );
-};
-
-export default clips;
+}

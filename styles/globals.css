@@ -1,16 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .nav-link {
-    @apply relative font-semibold text-white cursor-pointer text-[17px] w-fit md:block after:block after:content-[''] after:absolute after:h-[3px] after:bg-yellow-400 after:w-full after:scale-x-0 after:hover:scale-x-100
-    after:transition after:duration-300 after:origin-center hidden;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  .nav-link-mobile {
-    @apply relative mb-[2rem] font-semibold text-white cursor-pointer text-[27px] w-fit md:block after:block after:content-[''] after:absolute after:h-[3px] after:bg-yellow-400 after:w-full after:scale-x-0 after:hover:scale-x-100
-    after:transition after:duration-300 after:origin-center;
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  :lang(th) body,
+  html[lang="th"] body {
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply inline-block rounded-full bg-mint px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-forest;
+  }
+  .section-title {
+    @apply mb-10 font-display text-3xl font-bold tracking-tight sm:text-4xl;
+  }
+  .sub-title {
+    @apply mb-3 text-sm font-semibold uppercase tracking-wider text-muted;
+  }
+  .work-number {
+    @apply font-display text-sm font-bold text-accent;
+  }
+  .work-title {
+    @apply mt-1 font-display text-2xl font-bold;
+  }
+  .nav-link {
+    @apply relative text-sm font-medium text-muted transition-colors hover:text-ink after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:content-[''] hover:after:scale-x-100;
+  }
+  .btn-primary {
+    @apply inline-flex items-center rounded-full bg-forest px-6 py-3 font-semibold text-white transition hover:bg-accent;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center rounded-full border border-ink/15 bg-white px-6 py-3 font-semibold text-ink transition hover:border-accent hover:text-accent;
   }
 }

@@ -1,12 +1,17 @@
-import React from "react";
-import Projects from "@/components/Projects";
+import { useEffect } from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
-const projects = () => {
+// Old page kept so existing links still work — sends visitors to the new section.
+export default function Redirect() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/#experience");
+  }, [router]);
   return (
-    <div>
-      <Projects />
-    </div>
+    <Head>
+      <meta name="robots" content="noindex" />
+      <meta httpEquiv="refresh" content="0; url=/portfolio/#experience" />
+    </Head>
   );
-};
-
-export default projects;
+}
