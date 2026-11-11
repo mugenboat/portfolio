@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import sprite from "@/assets/boat-dance.png";
+import sprite from "@/assets/boat-wai.png";
 import { useLanguage } from "./LanguageContext";
 
-const FRAMES = 8;
+const FRAMES = 12;
 const HIDE_KEY = "boat-dancer-hidden";
 
-/** Small dancing pixel Boat fixed to the bottom-right corner. */
+/** Small pixel Boat doing a Thai wai (สวัสดี) in the bottom-right corner. */
 export default function DancingBoat() {
   const { t } = useLanguage();
   const [hidden, setHidden] = useState(true); // start hidden to avoid a flash before storage is read
