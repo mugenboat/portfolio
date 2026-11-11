@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 export default function Redirect() {
   const router = useRouter();
   useEffect(() => {
-    router.replace("/#videos");
+    router.replace("/#work");
   }, [router]);
   return (
     <Head>
       <meta name="robots" content="noindex" />
-      <meta httpEquiv="refresh" content="0; url=/portfolio/#videos" />
+      <meta httpEquiv="refresh" content="0; url=/portfolio/#work" />
     </Head>
   );
 }

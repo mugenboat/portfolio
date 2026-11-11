@@ -1,44 +1,17 @@
 import { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
-import {
-  ArrowUpRightIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  PlayIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/components/LanguageContext";
+import WorkSection from "@/components/WorkSection";
 import { contact, devProjects, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
-import calendar from "@/assets/work/content-calendar.jpg";
-import tracker from "@/assets/work/performance-tracker.jpg";
-import design1 from "@/assets/work/design-1.jpg";
-import design2 from "@/assets/work/design-2.jpg";
-import design3 from "@/assets/work/design-3.jpg";
-import design4 from "@/assets/work/design-4.jpg";
-import design5 from "@/assets/work/design-5.jpg";
-import design6 from "@/assets/work/design-6.jpg";
-import video1 from "@/assets/work/video-1.jpg";
-import video2 from "@/assets/work/video-2.jpg";
-import video3 from "@/assets/work/video-3.jpg";
 import geeers from "@/public/geeers.png";
 import sansiri from "@/public/sansiri.png";
 import one from "@/public/one.png";
 import mez from "@/public/mez.png";
 
 const logos: Record<string, StaticImageData> = { geeers, sansiri, one, mez };
-const designs = [design1, design2, design3, design4, design5, design6];
-const videoThumbs = [video1, video2, video3];
-
-const facebookVideos = [
-  "https://www.facebook.com/chongnomst/videos/1780449818702034/",
-  "https://www.facebook.com/chongnomst/videos/2119944344786195/",
-  "https://www.facebook.com/chongnomst/videos/1926046817475666",
-  "https://www.facebook.com/chongnomst/videos/2205632489531585/",
-  "https://www.facebook.com/chongnomst/videos/738362913227850/",
-  "https://www.facebook.com/chongnomst/videos/307033649895047",
-  "https://www.facebook.com/reel/863562169618474",
-];
 
 function Section({
   id,
@@ -66,50 +39,6 @@ function Tag({ children }: { children: ReactNode }) {
     <span className="inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm text-ink">
       {children}
     </span>
-  );
-}
-
-function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1 font-medium text-accent underline-offset-4 hover:underline"
-    >
-      {children}
-      <ArrowUpRightIcon className="h-3.5 w-3.5" />
-    </a>
-  );
-}
-
-function ZoomImage({
-  src,
-  alt,
-  hint,
-  imgClass = "h-auto w-full",
-}: {
-  src: StaticImageData;
-  alt: string;
-  hint: string;
-  imgClass?: string;
-}) {
-  return (
-    <a
-      href={src.src}
-      target="_blank"
-      rel="noopener noreferrer"
-      title={hint}
-      className="group block overflow-hidden rounded-xl border border-line bg-white"
-    >
-      <Image
-        src={src}
-        alt={alt}
-        placeholder="blur"
-        className={`${imgClass} transition-transform duration-500 group-hover:scale-[1.02]`}
-        sizes="(min-width: 1024px) 50vw, 100vw"
-      />
-    </a>
   );
 }
 
@@ -234,104 +163,7 @@ export default function Home() {
         </ol>
       </Section>
 
-      {/* Work */}
-      <Section id="work" title={t.work.title} className="bg-white">
-        <p className="-mt-6 mb-12 max-w-2xl text-lg text-muted">{t.work.intro}</p>
-
-        <div className="space-y-20">
-          <div className="grid items-center gap-8 lg:grid-cols-[1fr_2fr]">
-            <div>
-              <span className="work-number">01</span>
-              <h3 className="work-title">{t.work.calendar.title}</h3>
-              <p className="mt-3 text-muted">{t.work.calendar.body}</p>
-            </div>
-            <ZoomImage src={calendar} alt={t.work.calendar.title} hint={t.work.open} />
-          </div>
-
-          <div className="grid items-center gap-8 lg:grid-cols-[2fr_1fr]">
-            <div className="lg:order-2">
-              <span className="work-number">02</span>
-              <h3 className="work-title">{t.work.tracker.title}</h3>
-              <p className="mt-3 text-muted">{t.work.tracker.body}</p>
-            </div>
-            <div className="lg:order-1">
-              <ZoomImage src={tracker} alt={t.work.tracker.title} hint={t.work.open} />
-            </div>
-          </div>
-
-          <div>
-            <span className="work-number">03</span>
-            <h3 className="work-title">{t.work.design.title}</h3>
-            <p className="mb-6 mt-3 max-w-2xl text-muted">{t.work.design.body}</p>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              {designs.map((d, i) => (
-                <ZoomImage
-                  key={i}
-                  src={d}
-                  alt={`${t.work.design.title} ${i + 1}`}
-                  hint={t.work.open}
-                  imgClass="aspect-[4/5] w-full object-cover"
-                />
-              ))}
-            </div>
-          </div>
-
-          <div id="videos" className="scroll-mt-20">
-            <span className="work-number">04</span>
-            <h3 className="work-title">{t.work.video.title}</h3>
-            <p className="mb-6 mt-3 max-w-2xl text-muted">{t.work.video.body}</p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {videoThumbs.map((v, i) => (
-                <a
-                  key={i}
-                  href={contact.brandFacebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block overflow-hidden rounded-xl border border-line"
-                >
-                  <Image
-                    src={v}
-                    alt={`${t.work.video.title} ${i + 1}`}
-                    placeholder="blur"
-                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                  <span className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/25">
-                    <span className="rounded-full bg-white/90 p-3 shadow">
-                      <PlayIcon className="h-6 w-6 text-forest" />
-                    </span>
-                  </span>
-                </a>
-              ))}
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <span className="text-muted">{t.work.video.brandLinks}:</span>
-              <ExternalLink href={contact.brandFacebook}>Facebook · chongnomst</ExternalLink>
-            </div>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {facebookVideos.map(url => (
-                <div key={url} className="overflow-hidden rounded-xl border border-line bg-paper">
-                  <iframe
-                    title={url}
-                    src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`}
-                    loading="lazy"
-                    allowFullScreen
-                    allow="encrypted-media; picture-in-picture"
-                    className="aspect-[9/12] w-full"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-              <span className="text-muted">{t.work.video.personal}:</span>
-              <ExternalLink href={contact.lemon8}>Lemon8 · @boattheblur</ExternalLink>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <WorkSection />
 
       {/* Skills */}
       <Section id="skills" title={t.skills.title}>
