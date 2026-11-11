@@ -149,8 +149,6 @@ export default function Home() {
             </div>
             <div className="mt-8 flex flex-wrap gap-3 font-pixel text-[9px] uppercase">
               <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={contact.lemon8} target="_blank" rel="noopener noreferrer">Lemon8</a>
-              <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={`mailto:${contact.email}`}>Email</a>
             </div>
           </div>
 
