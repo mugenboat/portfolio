@@ -280,10 +280,11 @@ export default function Home() {
               </p>
               <p className="mt-2 text-lg leading-snug">{t.caseStudy.strategyBody}</p>
             </div>
-            <ol className="mt-5 grid grid-cols-4 gap-2.5">
+            <ol className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
               {t.caseStudy.steps.map((s, i) => (
                 <li key={s} className={`border-4 border-ink px-1 py-3 text-center font-pixel text-[9px] uppercase sm:text-[10px] ${stepColors[i]}`}>
-                  {i + 1} {s}
+                  <span className="block text-sm sm:text-base">{i + 1}</span>
+                  <span className="mt-1.5 block">{s}</span>
                 </li>
               ))}
             </ol>
