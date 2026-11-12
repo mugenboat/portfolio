@@ -24,6 +24,8 @@ import design6 from "@/assets/work/design-6.jpg";
 import video1 from "@/assets/work/video-1.jpg";
 import video2 from "@/assets/work/video-2.jpg";
 import video3 from "@/assets/work/video-3.jpg";
+import cardInfluencer from "@/assets/work/card-influencer.png";
+import cardAds from "@/assets/work/card-ads.png";
 
 const designs = [design1, design2, design3, design4, design5, design6];
 const videoThumbs = [video1, video2, video3];
@@ -116,12 +118,8 @@ export default function Home() {
         <Image key={i} src={d} alt="" className="h-full w-full object-cover" sizes="120px" />
       ))}
     </div>,
-    <div key="i" className="flex h-full flex-col items-center justify-center gap-2 bg-pink font-pixel text-sm">
-      INFLUENCER<span className="text-xs">★ ★ ★</span>
-    </div>,
-    <div key="a" className="flex h-full items-center justify-center bg-sky text-center font-pixel text-sm leading-relaxed">
-      META +<br />TIKTOK ADS
-    </div>,
+    <Image key="i" src={cardInfluencer} alt="" className="pixelated h-full w-full object-cover" sizes="360px" />,
+    <Image key="a" src={cardAds} alt="" className="pixelated h-full w-full object-cover" sizes="360px" />,
   ];
   const workTargets: (GalleryTab | "case" | null)[] = ["videos", "calendar", "tracker", "designs", null, null];
 
