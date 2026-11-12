@@ -46,11 +46,11 @@ export default function DancingBoat() {
           >
             <XMarkIcon className="h-3 w-3" />
           </button>
-          <p className="font-pixel text-[9px] uppercase">{t.dancer.hi}</p>
+          <p className="font-pixel text-[10px] uppercase">{t.dancer.hi}</p>
           <a
             href="#contact"
             onClick={() => setBubble(false)}
-            className="mt-1.5 block font-pixel text-[9px] uppercase text-green hover:underline"
+            className="mt-1.5 block font-pixel text-[10px] uppercase text-green hover:underline"
           >
             {t.dancer.cta}
           </a>

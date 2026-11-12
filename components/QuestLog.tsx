@@ -61,11 +61,11 @@ export default function QuestLog() {
             aria-current={i === active ? "true" : undefined}
           >
             <div className="flex flex-wrap items-center justify-between gap-2 border-b-4 border-ink bg-forest px-4 py-2 text-white">
-              <span className="font-pixel text-[9px] uppercase sm:text-[10px]">
+              <span className="font-pixel text-[10px] uppercase sm:text-[11px]">
                 <span className="text-sun">LV.{String(jobs.length - i).padStart(2, "0")}</span> · {job.period}
               </span>
               {i === 0 && (
-                <span className="border-2 border-ink bg-sun px-1.5 py-0.5 font-pixel text-[8px] uppercase text-ink">
+                <span className="border-2 border-ink bg-sun px-1.5 py-0.5 font-pixel text-[9px] uppercase text-ink">
                   ▶ Now playing
                 </span>
               )}
@@ -107,7 +107,7 @@ export default function QuestLog() {
           <ChevronRightIcon className="h-5 w-5" />
         </button>
       </div>
-      <p className="mt-3 text-center font-pixel text-[9px] uppercase text-muted">
+      <p className="mt-3 text-center font-pixel text-[10px] uppercase text-muted">
         {active + 1} / {jobs.length}
       </p>
     </div>

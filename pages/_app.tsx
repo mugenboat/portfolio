@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
 import { LanguageProvider } from "@/components/LanguageContext";
 import "@fontsource/press-start-2p/400.css";
-import "@fontsource/pixelify-sans/400.css";
-import "@fontsource/pixelify-sans/700.css";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
 import "@fontsource/kanit/400.css";
 import "@fontsource/kanit/600.css";
 import "@/styles/globals.css";

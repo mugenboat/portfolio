@@ -9,7 +9,7 @@ function LangToggle() {
   const options: Lang[] = ["en", "th"];
   return (
     <div
-      className="inline-flex border-4 border-ink bg-paper font-pixel text-[10px] shadow-px-sm"
+      className="inline-flex border-4 border-ink bg-paper font-pixel text-[11px] shadow-px-sm"
       role="group"
       aria-label="Language"
     >
@@ -116,7 +116,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <DancingBoat />
 
       <footer className="border-t-4 border-forest bg-ink py-6 text-paper/70">
-        <div className="container-page flex flex-col items-center justify-between gap-2 font-pixel text-[9px] uppercase sm:flex-row">
+        <div className="container-page flex flex-col items-center justify-between gap-2 font-pixel text-[10px] uppercase sm:flex-row">
           <p>
             © {new Date().getFullYear()} {t.footer}
           </p>

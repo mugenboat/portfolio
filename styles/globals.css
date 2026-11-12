@@ -18,13 +18,14 @@
   }
   body {
     @apply bg-bg font-sans text-ink antialiased;
-    font-size: 18px;
+    font-size: 17px;
+    line-height: 1.6;
     background-image: linear-gradient(rgba(27, 27, 47, 0.06) 2px, transparent 2px),
       linear-gradient(90deg, rgba(27, 27, 47, 0.06) 2px, transparent 2px);
     background-size: 32px 32px;
   }
   html[lang="th"] body {
-    font-family: Kanit, "Pixelify Sans", system-ui, sans-serif;
+    font-family: Kanit, "IBM Plex Sans", system-ui, sans-serif;
     font-size: 17px;
   }
 }
@@ -40,7 +41,7 @@
     @apply relative border-4 border-ink bg-paper shadow-px;
   }
   .win-bar {
-    @apply flex items-center justify-between border-b-4 border-ink bg-forest px-3 py-1.5 font-pixel text-[10px] text-white;
+    @apply flex items-center justify-between border-b-4 border-ink bg-forest px-3 py-1.5 font-pixel text-[11px] text-white;
   }
   .win-bar i {
     @apply ml-1.5 inline-block h-3 w-3 border-2 border-ink bg-sun;
@@ -64,10 +65,10 @@
     @apply border-[3px] border-ink bg-bg px-2 py-1 text-base;
   }
   .nav-link {
-    @apply font-pixel text-[11px] uppercase transition-colors hover:text-green;
+    @apply font-pixel text-[12px] uppercase transition-colors hover:text-green;
   }
   .folder {
-    @apply absolute z-10 w-24 text-center font-pixel text-[8px] uppercase transition-transform hover:-translate-y-1;
+    @apply absolute z-10 w-24 text-center font-pixel text-[9px] uppercase transition-transform hover:-translate-y-1;
   }
   .folder i {
     @apply relative mb-1.5 block h-14 border-4 border-ink shadow-px-sm;

@@ -130,7 +130,7 @@ export default function Home() {
       <section className="pb-20 pt-8 md:pb-24 md:pt-12">
         <div className="container-page grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div>
-            <span className="inline-block bg-ink px-2.5 py-2 font-pixel text-[9px] uppercase text-sun sm:text-[10px]">
+            <span className="inline-block bg-ink px-2.5 py-2 font-pixel text-[10px] uppercase text-sun sm:text-[11px]">
               ▶ {t.hero.tag}
             </span>
             <h1 className="px-title mt-6 text-[34px] sm:text-5xl lg:text-[58px]">
@@ -146,7 +146,7 @@ export default function Home() {
                 {t.hero.connect}
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 font-pixel text-[9px] uppercase">
+            <div className="mt-8 flex flex-wrap gap-3 font-pixel text-[10px] uppercase">
               <a className="border-[3px] border-ink bg-paper px-2 py-2 hover:bg-sun" href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function Home() {
                 <span aria-hidden><i /><i /></span>
               </div>
               <Image src={profilePixel} alt="Thanate Janyaswasdi (Boat)" priority className="pixelated block h-[230px] w-full object-cover sm:h-[320px]" sizes="360px" />
-              <div className="border-t-4 border-ink bg-sun py-2.5 text-center font-pixel text-[10px] sm:text-[11px]">
+              <div className="border-t-4 border-ink bg-sun py-2.5 text-center font-pixel text-[11px] sm:text-[12px]">
                 THANATE (BOAT)
               </div>
             </div>
@@ -212,8 +212,8 @@ export default function Home() {
                 <>
                   <div className="h-40 overflow-hidden border-b-4 border-ink bg-white">{workThumbs[i]}</div>
                   <div className="p-4">
-                    <p className="font-pixel text-[9px] text-green">LV.0{i + 1}</p>
-                    <h3 className="mt-1.5 font-pixel text-[11px] uppercase leading-relaxed">{c.title}</h3>
+                    <p className="font-pixel text-[10px] text-green">LV.0{i + 1}</p>
+                    <h3 className="mt-1.5 font-pixel text-[12px] uppercase leading-relaxed">{c.title}</h3>
                     <p className="mt-2 leading-snug text-muted">{c.body}</p>
                   </div>
                 </>
@@ -263,26 +263,26 @@ export default function Home() {
             </div>
           </WinBox>
           <div>
-            <span className="inline-block border-[3px] border-ink bg-pink px-2 py-1.5 font-pixel text-[9px] uppercase sm:text-[10px]">
+            <span className="inline-block border-[3px] border-ink bg-pink px-2 py-1.5 font-pixel text-[10px] uppercase sm:text-[11px]">
               ★ {t.caseStudy.label}
             </span>
             <h2 className="px-title mt-4 text-2xl sm:text-3xl">{t.caseStudy.title}</h2>
-            <p className="mt-2 font-pixel text-[10px] uppercase text-green">{t.caseStudy.brand}</p>
+            <p className="mt-2 font-pixel text-[11px] uppercase text-green">{t.caseStudy.brand}</p>
             <div className="box mt-5 p-4">
-              <p className="font-pixel text-[10px] uppercase">
+              <p className="font-pixel text-[11px] uppercase">
                 <span className="text-green">!</span> {t.caseStudy.quest}
               </p>
               <p className="mt-2 text-lg leading-snug">{t.caseStudy.questBody}</p>
             </div>
             <div className="box mt-5 p-4">
-              <p className="font-pixel text-[10px] uppercase">
+              <p className="font-pixel text-[11px] uppercase">
                 <span className="text-green">⚔</span> {t.caseStudy.strategy}
               </p>
               <p className="mt-2 text-lg leading-snug">{t.caseStudy.strategyBody}</p>
             </div>
             <ol className="mt-5 grid grid-cols-4 gap-2.5">
               {t.caseStudy.steps.map((s, i) => (
-                <li key={s} className={`border-4 border-ink px-1 py-3 text-center font-pixel text-[8px] uppercase sm:text-[9px] ${stepColors[i]}`}>
+                <li key={s} className={`border-4 border-ink px-1 py-3 text-center font-pixel text-[9px] uppercase sm:text-[10px] ${stepColors[i]}`}>
                   {i + 1} {s}
                 </li>
               ))}
@@ -309,7 +309,7 @@ export default function Home() {
                 aria-selected={tab === k}
                 aria-controls="gallery-panel"
                 onClick={() => setTab(k)}
-                className={`border-4 border-ink px-3 py-2.5 font-pixel text-[9px] uppercase transition-transform sm:text-[10px] ${
+                className={`border-4 border-ink px-3 py-2.5 font-pixel text-[10px] uppercase transition-transform sm:text-[11px] ${
                   tab === k ? "translate-x-1 translate-y-1 bg-ink text-sun" : "bg-paper shadow-px-sm hover:bg-sun"
                 }`}
               >
@@ -331,7 +331,7 @@ export default function Home() {
                   ))}
                 </Carousel>
                 <p className="mt-3 text-center">
-                  <a href={contact.brandFacebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-pixel text-[10px] uppercase text-green hover:underline">
+                  <a href={contact.brandFacebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-pixel text-[11px] uppercase text-green hover:underline">
                     {t.gallery.watchOn} <ArrowUpRightIcon className="h-3.5 w-3.5" />
                   </a>
                 </p>
@@ -387,7 +387,7 @@ export default function Home() {
             </WinBox>
             <WinBox title={t.inventory.eduFile} className="md:col-span-2 lg:col-span-1">
               <div className="p-5 leading-snug">
-                <span className="block font-pixel text-[8px] uppercase text-green">{t.inventory.education}</span>
+                <span className="block font-pixel text-[9px] uppercase text-green">{t.inventory.education}</span>
                 <p className="mt-1">{t.inventory.degree}</p>
                 <p className="mt-4 text-muted">{t.inventory.languages}</p>
               </div>
@@ -405,12 +405,12 @@ export default function Home() {
             {t.contactSection.line1}
             <span className="block text-sun">{t.contactSection.line2}</span>
           </h2>
-          <p className="mt-5 font-pixel text-[10px] uppercase text-green sm:text-xs">{t.contactSection.continue}</p>
+          <p className="mt-5 font-pixel text-[11px] uppercase text-green sm:text-xs">{t.contactSection.continue}</p>
           <p className="mx-auto mt-5 max-w-xl text-lg text-paper/80">{t.contactSection.body}</p>
           <a href={`mailto:${contact.email}`} className="btn-px mt-8 inline-flex items-center gap-2 !normal-case shadow-[6px_6px_0_#3fa66b]">
             <EnvelopeIcon className="h-4 w-4" /> {contact.email}
           </a>
-          <div className="mt-10 flex flex-wrap justify-center gap-4 font-pixel text-[10px] uppercase">
+          <div className="mt-10 flex flex-wrap justify-center gap-4 font-pixel text-[11px] uppercase">
             <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-sun">LinkedIn</a>
             <a href={contact.lemon8} target="_blank" rel="noopener noreferrer" className="hover:text-sun">Lemon8</a>
             <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-sun">GitHub</a>

@@ -17,7 +17,7 @@ const config: Config = {
         muted: "#55566b",
       },
       fontFamily: {
-        sans: ['"Pixelify Sans"', "Kanit", "system-ui", "sans-serif"],
+        sans: ['"IBM Plex Sans"', "Kanit", "system-ui", "sans-serif"],
         pixel: ['"Press Start 2P"', '"Kanit Px"', "Kanit", "monospace"],
       },
       boxShadow: {
