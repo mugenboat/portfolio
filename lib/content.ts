@@ -124,7 +124,7 @@ export const content: Record<Lang, Dict> = {
       ],
     },
     caseStudy: {
-      label: "Boss level : Case study 01",
+      label: "Stage 1-1 : Case study 01",
       title: "Grow Together",
       brand: "Sirichai 25 · Goat milk",
       quest: "Quest",
@@ -261,7 +261,7 @@ export const content: Record<Lang, Dict> = {
       ],
     },
     caseStudy: {
-      label: "Boss level : เคสตัวอย่าง 01",
+      label: "Stage 1-1 : เคสตัวอย่าง 01",
       title: "Grow Together",
       brand: "ศิริชัย 25 · นมแพะ",
       quest: "โจทย์",
