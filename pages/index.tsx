@@ -9,6 +9,7 @@ import {
 import { useLanguage } from "@/components/LanguageContext";
 import QuestLog from "@/components/QuestLog";
 import FacebookVideo from "@/components/FacebookVideo";
+import PixelDivider from "@/components/PixelDivider";
 import { contact, GalleryTab, marketingSkills, tools } from "@/lib/content";
 
 import profile from "@/public/profile.jpg";
@@ -184,6 +185,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PixelDivider variant="grass" />
+
       {/* ===== Intro + work ===== */}
       <section id="work" className="section-band scroll-mt-16 py-16 md:py-20">
         <div className="container-page">
@@ -234,6 +237,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PixelDivider variant="bricks" />
+
       {/* ===== Experience ===== */}
       <section id="experience" className="scroll-mt-16 py-16 md:py-20">
         <div className="container-page">
@@ -242,6 +247,8 @@ export default function Home() {
           <QuestLog />
         </div>
       </section>
+
+      <PixelDivider variant="coins" />
 
       {/* ===== Case study ===== */}
       <section id="case-study" className="section-band scroll-mt-16 py-16 md:py-20">
@@ -283,6 +290,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PixelDivider variant="bricks" />
 
       {/* ===== Gallery ===== */}
       <section id="gallery" className="scroll-mt-16 py-16 md:py-20">
@@ -354,6 +363,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PixelDivider variant="coins" />
+
       {/* ===== Inventory ===== */}
       <section id="inventory" className="section-band scroll-mt-16 py-16 md:py-20">
         <div className="container-page">
@@ -385,8 +396,10 @@ export default function Home() {
         </div>
       </section>
 
+      <PixelDivider variant="castle" />
+
       {/* ===== Contact ===== */}
-      <section id="contact" className="scroll-mt-16 border-t-4 border-ink bg-ink py-20 text-center text-paper md:py-24">
+      <section id="contact" className="scroll-mt-16 bg-ink py-20 text-center text-paper md:py-24">
         <div className="container-page">
           <h2 className="px-title text-3xl leading-snug sm:text-5xl">
             {t.contactSection.line1}
