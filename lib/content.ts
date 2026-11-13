@@ -216,8 +216,8 @@ export const content: Record<Lang, Dict> = {
     contactSection: {
       line1: "Ready for",
       line2: "Player 2?",
-      continue: "> Continue? 10... 9... 8...",
-      body: "Open to Digital Marketing and Content Marketing roles.",
+      continue: "> Invite to company? ▶ YES / NO",
+      body: "Interested in Digital Marketing and Content Marketing roles.",
       location: "Based in Chonburi, Thailand",
     },
     dancer: { hi: "Hi! I'm Boat", cta: "Let's work together ▶", hide: "Hide character" },
@@ -353,8 +353,8 @@ export const content: Record<Lang, Dict> = {
     contactSection: {
       line1: "Ready for",
       line2: "Player 2?",
-      continue: "> Continue? 10... 9... 8...",
-      body: "เปิดรับตำแหน่ง Digital Marketing และ Content Marketing",
+      continue: "> Invite to company? ▶ YES / NO",
+      body: "สนใจตำแหน่ง Digital Marketing และ Content Marketing",
       location: "อยู่ที่ชลบุรี ประเทศไทย",
     },
     dancer: { hi: "สวัสดีครับ ผมโบ๊ท!", cta: "มาร่วมงานกัน ▶", hide: "ซ่อนตัวละคร" },
