@@ -214,8 +214,8 @@ export const content: Record<Lang, Dict> = {
       ],
     },
     contactSection: {
-      line1: "Ready for",
-      line2: "Player 2?",
+      line1: "New party",
+      line2: "member?",
       continue: "> Invite to company? ▶ YES / NO",
       body: "Interested in Digital Marketing and Content Marketing roles.",
       location: "Based in Chonburi, Thailand",
@@ -351,8 +351,8 @@ export const content: Record<Lang, Dict> = {
       ],
     },
     contactSection: {
-      line1: "Ready for",
-      line2: "Player 2?",
+      line1: "New party",
+      line2: "member?",
       continue: "> Invite to company? ▶ YES / NO",
       body: "สนใจตำแหน่ง Digital Marketing และ Content Marketing",
       location: "อยู่ที่ชลบุรี ประเทศไทย",
